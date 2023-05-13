@@ -5,8 +5,12 @@ function PomodoroTimer() {
   const [seconds, setSeconds] = useState(0)
   const [displayMessage, setDisplayMessage] = useState(false)
   const [start, setStart] = useState(false)
+  const [focusTime, setFocusTime] = useState(25)
+  const [breakTime, setBreakTime] = useState(5)
 
   const handleStart = () => {
+    setMinutes(focusTime)
+    setSeconds(0)
     setStart(true)
   }
 
@@ -24,7 +28,7 @@ function PomodoroTimer() {
         if (seconds === 0) {
           if (minutes === 0) {
             setDisplayMessage(!displayMessage)
-            setMinutes(displayMessage ? 25 : 5)
+            setMinutes(displayMessage ? focusTime : breakTime)
           } else {
             setMinutes(minutes - 1)
             setSeconds(59)
@@ -35,7 +39,7 @@ function PomodoroTimer() {
       clearInterval(interval)
     }
     return () => clearInterval(interval)
-  }, [minutes, seconds, displayMessage, start])
+  }, [minutes, seconds, displayMessage, start, focusTime, breakTime])
 
   const timerMinutes = minutes < 10 ? `0${minutes}` : minutes
   const timerSeconds = seconds < 10 ? `0${seconds}` : seconds
@@ -47,6 +51,20 @@ function PomodoroTimer() {
       </div>
       <div className="timer">
         {timerMinutes}:{timerSeconds}
+      </div>
+      <div className="inputs">
+        <input
+          type="number"
+          value={focusTime}
+          onChange={(e) => setFocusTime(e.target.value)}
+          placeholder="Focus Time"
+        />
+        <input
+          type="number"
+          value={breakTime}
+          onChange={(e) => setBreakTime(e.target.value)}
+          placeholder="Break Time"
+        />
       </div>
       <div className="buttons">
         {!start ? (
