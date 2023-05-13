@@ -3,14 +3,11 @@ import React, { useState, useEffect } from 'react'
 function PomodoroTimer() {
   const [minutes, setMinutes] = useState(25)
   const [seconds, setSeconds] = useState(0)
-  const [displayMessage, setDisplayMessage] = useState(false)
   const [start, setStart] = useState(false)
-  const [focusTime, setFocusTime] = useState(25)
-  const [breakTime, setBreakTime] = useState(5)
+  const [session, setSession] = useState('focus')
+  const [focusSessions, setFocusSessions] = useState(0)
 
   const handleStart = () => {
-    setMinutes(focusTime)
-    setSeconds(0)
     setStart(true)
   }
 
@@ -27,8 +24,22 @@ function PomodoroTimer() {
         }
         if (seconds === 0) {
           if (minutes === 0) {
-            setDisplayMessage(!displayMessage)
-            setMinutes(displayMessage ? focusTime : breakTime)
+            if (session === 'focus') {
+              setFocusSessions(focusSessions + 1)
+              if (focusSessions === 4) {
+                setMinutes(15) // long break
+                setSession('long-break')
+              } else {
+                setMinutes(5) // short break
+                setSession('short-break')
+              }
+            } else {
+              setMinutes(25) // focus
+              if (session === 'long-break') {
+                setFocusSessions(0)
+              }
+              setSession('focus')
+            }
           } else {
             setMinutes(minutes - 1)
             setSeconds(59)
@@ -39,33 +50,18 @@ function PomodoroTimer() {
       clearInterval(interval)
     }
     return () => clearInterval(interval)
-  }, [minutes, seconds, displayMessage, start, focusTime, breakTime])
+  }, [minutes, seconds, start, session, focusSessions])
 
   const timerMinutes = minutes < 10 ? `0${minutes}` : minutes
   const timerSeconds = seconds < 10 ? `0${seconds}` : seconds
 
   return (
     <div className="pomodoro">
-      <div className="message">
-        {displayMessage && <div>Break time! New round starts in:</div>}
-      </div>
       <div className="timer">
         {timerMinutes}:{timerSeconds}
       </div>
-      <div className="inputs">
-        <input
-          type="number"
-          value={focusTime}
-          onChange={(e) => setFocusTime(e.target.value)}
-          placeholder="Focus Time"
-        />
-        <input
-          type="number"
-          value={breakTime}
-          onChange={(e) => setBreakTime(e.target.value)}
-          placeholder="Break Time"
-        />
-      </div>
+      <div className="intervals">Interval {focusSessions + 1} of 5</div>
+
       <div className="buttons">
         {!start ? (
           <button onClick={handleStart}>Start</button>
