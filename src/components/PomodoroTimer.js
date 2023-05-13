@@ -4,28 +4,38 @@ function PomodoroTimer() {
   const [minutes, setMinutes] = useState(25)
   const [seconds, setSeconds] = useState(0)
   const [displayMessage, setDisplayMessage] = useState(false)
+  const [start, setStart] = useState(false)
+
+  const handleStart = () => {
+    setStart(true)
+  }
+
+  const handleStop = () => {
+    setStart(false)
+  }
 
   useEffect(() => {
-    let interval = setInterval(() => {
-      clearInterval(interval)
-
-      if (seconds === 0) {
-        if (minutes !== 0) {
-          setSeconds(59)
-          setMinutes(minutes - 1)
-        } else {
-          let minutes = displayMessage ? 24 : 4
-          let seconds = 59
-
-          setSeconds(seconds)
-          setMinutes(minutes)
-          setDisplayMessage(!displayMessage)
+    let interval = null
+    if (start) {
+      interval = setInterval(() => {
+        if (seconds > 0) {
+          setSeconds(seconds - 1)
         }
-      } else {
-        setSeconds(seconds - 1)
-      }
-    }, 1000)
-  }, [seconds])
+        if (seconds === 0) {
+          if (minutes === 0) {
+            setDisplayMessage(!displayMessage)
+            setMinutes(displayMessage ? 25 : 5)
+          } else {
+            setMinutes(minutes - 1)
+            setSeconds(59)
+          }
+        }
+      }, 1000)
+    } else if (!start) {
+      clearInterval(interval)
+    }
+    return () => clearInterval(interval)
+  }, [minutes, seconds, displayMessage, start])
 
   const timerMinutes = minutes < 10 ? `0${minutes}` : minutes
   const timerSeconds = seconds < 10 ? `0${seconds}` : seconds
@@ -37,6 +47,13 @@ function PomodoroTimer() {
       </div>
       <div className="timer">
         {timerMinutes}:{timerSeconds}
+      </div>
+      <div className="buttons">
+        {!start ? (
+          <button onClick={handleStart}>Start</button>
+        ) : (
+          <button onClick={handleStop}>Stop</button>
+        )}
       </div>
     </div>
   )
