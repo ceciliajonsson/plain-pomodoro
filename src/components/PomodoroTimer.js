@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import IntervalDisplay from './IntervalDisplay'
+// import IntervalDisplay from './IntervalDisplay'
 import ControlButtons from './StartStopButtons'
 import Timer from './Timer'
 import GoalInput from './GoalInput'
@@ -16,14 +16,14 @@ function PomodoroTimer() {
   const [duration, setDuration] = useState(25 * 60)
   const [goal, setGoal] = useState('')
   const [goals, setGoals] = useState([])
-  const { settings } = useContext(PomodoroContext)
-  //const [timerKey, setTimerKey] = useState(0)
   const [showSettings, setShowSettings] = useState(false)
+
+  const { settings } = useContext(PomodoroContext)
 
   useEffect(() => {
     setDuration(settings.focusTime)
     setSession('focus')
-    setKey((prevKey) => prevKey + 1) // reset the timer
+    setKey((prevKey) => prevKey + 1) // Reset the timer
   }, [settings])
 
   const handleStartStop = () => {
@@ -36,35 +36,26 @@ function PomodoroTimer() {
   }
 
   const handleComplete = () => {
+    let newFocusSessions = focusSessions
     if (session === 'focus') {
-      setFocusSessions((prevFocusSessions) => prevFocusSessions + 1)
-      if (focusSessions === 4) {
-        setDuration(15 * 60) // long-break
+      newFocusSessions = focusSessions + 1
+      setFocusSessions(newFocusSessions)
+      if (newFocusSessions === settings.intervals) {
+        setDuration(settings.longBreak) // long-break
         setSession('long-break')
       } else {
-        setDuration(5 * 60) // short-break
+        setDuration(settings.shortBreak) // short-break
         setSession('short-break')
       }
-    } else {
-      setDuration(25 * 60)
+    } else if (session === 'short-break' || session === 'long-break') {
       if (session === 'long-break') {
-        setFocusSessions(0)
+        newFocusSessions = 0
+        setFocusSessions(newFocusSessions)
       }
-      setSession('focus') // focus
+      setDuration(settings.focusTime) // focus
+      setSession('focus')
     }
-    if (session === 'focus') {
-      setFocusSessions((prevFocusSessions) => prevFocusSessions + 1)
-      if (focusSessions === settings.intervals - 1) {
-        setDuration(settings.longBreak)
-        setSession('long-break')
-      } else {
-        setDuration(settings.focusTime)
-        if (session === 'long-break') {
-          setFocusSessions(0)
-        }
-        setSession('focus')
-      }
-    }
+
     setKey((prevKey) => prevKey + 1)
     return [true, 1000] // repeat animation after 1 second delay
   }
@@ -90,7 +81,7 @@ function PomodoroTimer() {
 
   return (
     <div className="pomodoro">
-      <SettingsInfo />
+      <SettingsInfo focusSessions={focusSessions} />
       <button onClick={() => setShowSettings(!showSettings)}>
         {showSettings ? 'Hide' : 'Show'} Settings
       </button>
@@ -102,7 +93,10 @@ function PomodoroTimer() {
         duration={duration}
         handleComplete={handleComplete}
       />
-      <IntervalDisplay focusSessions={focusSessions} />
+      {/* <IntervalDisplay
+        focusSessions={focusSessions}
+        intervals={settings.intervals}
+      /> */}
       <ControlButtons start={start} handleStartStop={handleStartStop} />
       <GoalInput goal={goal} setGoal={setGoal} addGoal={addGoal} />
       <GoalList

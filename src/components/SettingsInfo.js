@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { PomodoroContext } from '../contexts/PomodoroContext'
 
-function SettingsInfo() {
+function SettingsInfo({ focusSessions }) {
   const { settings } = useContext(PomodoroContext)
 
   const formatTime = (timeInSeconds) => {
@@ -11,10 +11,11 @@ function SettingsInfo() {
 
   return (
     <div className="settings-info">
-      <p>Focus Interval: {formatTime(settings.focusTime)}</p>
-      <p>Short Break Interval: {formatTime(settings.shortBreak)}</p>
-      <p>Long Break Interval: {formatTime(settings.longBreak)}</p>
-      <p>Intervals before Long Break: {settings.intervals}</p>
+      <p>Time for focused work: {formatTime(settings.focusTime)}</p>
+      <p>Duration of short breaks: {formatTime(settings.shortBreak)}</p>
+      <p>Duration of long breaks: {formatTime(settings.longBreak)}</p>
+      <p>Number of focus sessions before a long break: {settings.intervals}</p>
+      <p>Completed focus sessions: {focusSessions}</p>
     </div>
   )
 }

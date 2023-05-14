@@ -6,9 +6,12 @@ function Settings({ setShowSettings }) {
   const [tempSettings, setTempSettings] = useState(settings)
 
   const handleChange = (e) => {
+    const { name, value } = e.target
+    const newValue =
+      name === 'intervals' ? parseInt(value) : parseInt(value) * 60
     setTempSettings({
       ...tempSettings,
-      [e.target.name]: parseInt(e.target.value) * 60,
+      [name]: newValue,
     })
   }
 
