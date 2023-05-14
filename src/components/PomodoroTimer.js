@@ -6,6 +6,7 @@ import GoalInput from './GoalInput'
 import GoalList from './GoalList'
 import { PomodoroContext } from '../contexts/PomodoroContext'
 import Settings from './Settings'
+import SettingsInfo from './SettingsInfo'
 
 function PomodoroTimer() {
   const [start, setStart] = useState(false)
@@ -16,9 +17,7 @@ function PomodoroTimer() {
   const [goal, setGoal] = useState('')
   const [goals, setGoals] = useState([])
   const { settings } = useContext(PomodoroContext)
-
   //const [timerKey, setTimerKey] = useState(0)
-
   const [showSettings, setShowSettings] = useState(false)
 
   useEffect(() => {
@@ -91,6 +90,7 @@ function PomodoroTimer() {
 
   return (
     <div className="pomodoro">
+      <SettingsInfo />
       <button onClick={() => setShowSettings(!showSettings)}>
         {showSettings ? 'Hide' : 'Show'} Settings
       </button>
