@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-import { CountdownCircleTimer } from 'react-countdown-circle-timer'
+import IntervalDisplay from './IntervalDisplay'
+import ControlButtons from './StartStopButtons'
+import Timer from './Timer'
 
 function PomodoroTimer() {
   const [start, setStart] = useState(false)
@@ -17,17 +19,10 @@ function PomodoroTimer() {
     }
   }
 
-  const timerProps = {
-    isPlaying: start,
-    key: key,
-    size: 120,
-    strokeWidth: 6,
-  }
-
   const handleComplete = () => {
     if (session === 'focus') {
       setFocusSessions((prevFocusSessions) => prevFocusSessions + 1)
-      if (focusSessions === 3) {
+      if (focusSessions === 4) {
         setDuration(15 * 60) // long-break
         setSession('long-break')
       } else {
@@ -47,24 +42,17 @@ function PomodoroTimer() {
 
   return (
     <div className="pomodoro">
-      <CountdownCircleTimer
-        {...timerProps}
-        colors={session === 'focus' ? [['#EF798A']] : [['#218380']]}
+      <Timer
+        start={start}
+        key={key}
+        session={session}
         duration={duration}
-        onComplete={handleComplete}
-      >
-        {({ remainingTime }) => {
-          const minutes = Math.floor(remainingTime / 60)
-          const seconds = remainingTime % 60
-          return `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`
-        }}
-      </CountdownCircleTimer>
+        handleComplete={handleComplete}
+      />
 
-      <div className="intervals">Interval {focusSessions + 1} of 5</div>
+      <IntervalDisplay focusSessions={focusSessions} />
 
-      <div className="buttons">
-        <button onClick={handleStartStop}>{!start ? 'Start' : 'Stop'}</button>
-      </div>
+      <ControlButtons start={start} handleStartStop={handleStartStop} />
     </div>
   )
 }
