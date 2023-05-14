@@ -44,12 +44,23 @@ function PomodoroTimer() {
     return [true, 1000] // repeat animation after 1 second delay
   }
 
-  const addGoal = (goal) => {
-    setGoals((prevGoals) => [...prevGoals, goal])
+  const addGoal = (goalText) => {
+    setGoals((prevGoals) => [
+      ...prevGoals,
+      { text: goalText, completed: false },
+    ])
   }
 
   const removeGoal = (index) => {
     setGoals((prevGoals) => prevGoals.filter((_, i) => i !== index))
+  }
+
+  const toggleCompletion = (index) => {
+    setGoals((prevGoals) =>
+      prevGoals.map((goal, i) =>
+        i === index ? { ...goal, completed: !goal.completed } : goal
+      )
+    )
   }
 
   return (
@@ -67,7 +78,11 @@ function PomodoroTimer() {
       <ControlButtons start={start} handleStartStop={handleStartStop} />
 
       <GoalInput goal={goal} setGoal={setGoal} addGoal={addGoal} />
-      <GoalList goals={goals} removeGoal={removeGoal} />
+      <GoalList
+        goals={goals}
+        removeGoal={removeGoal}
+        toggleCompletion={toggleCompletion}
+      />
     </div>
   )
 }
