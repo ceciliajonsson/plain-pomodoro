@@ -1,9 +1,9 @@
 import React from 'react'
 
-function StartStopButtons({ start, _callback }) {
+function StartStopButtons({ start, handleStartStop }) {
   return (
     <div className="start-stop-buttons">
-      <button onClick={_callback}>{!start ? 'Start' : 'Stop'}</button>
+      <button onClick={handleStartStop}>{!start ? 'Start' : 'Stop'}</button>
     </div>
   )
 }

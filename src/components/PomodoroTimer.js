@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import IntervalDisplay from './IntervalDisplay'
 import ControlButtons from './StartStopButtons'
 import Timer from './Timer'
+import GoalInput from './GoalInput'
+import GoalList from './GoalList'
 
 function PomodoroTimer() {
   const [start, setStart] = useState(false)
@@ -9,6 +11,8 @@ function PomodoroTimer() {
   const [session, setSession] = useState('focus')
   const [focusSessions, setFocusSessions] = useState(0)
   const [duration, setDuration] = useState(25 * 60)
+  const [goal, setGoal] = useState('')
+  const [goals, setGoals] = useState([])
 
   const handleStartStop = () => {
     if (start) {
@@ -40,6 +44,14 @@ function PomodoroTimer() {
     return [true, 1000] // repeat animation after 1 second delay
   }
 
+  const addGoal = (goal) => {
+    setGoals((prevGoals) => [...prevGoals, goal])
+  }
+
+  const removeGoal = (index) => {
+    setGoals((prevGoals) => prevGoals.filter((_, i) => i !== index))
+  }
+
   return (
     <div className="pomodoro">
       <Timer
@@ -53,6 +65,9 @@ function PomodoroTimer() {
       <IntervalDisplay focusSessions={focusSessions} />
 
       <ControlButtons start={start} handleStartStop={handleStartStop} />
+
+      <GoalInput goal={goal} setGoal={setGoal} addGoal={addGoal} />
+      <GoalList goals={goals} removeGoal={removeGoal} />
     </div>
   )
 }
