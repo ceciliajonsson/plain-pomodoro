@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import IntervalDisplay from './IntervalDisplay'
 import ControlButtons from './StartStopButtons'
 import Timer from './Timer'
@@ -16,7 +16,16 @@ function PomodoroTimer() {
   const [goal, setGoal] = useState('')
   const [goals, setGoals] = useState([])
   const { settings } = useContext(PomodoroContext)
+
+  //const [timerKey, setTimerKey] = useState(0)
+
   const [showSettings, setShowSettings] = useState(false)
+
+  useEffect(() => {
+    setDuration(settings.focusTime)
+    setSession('focus')
+    setKey((prevKey) => prevKey + 1) // reset the timer
+  }, [settings])
 
   const handleStartStop = () => {
     if (start) {
