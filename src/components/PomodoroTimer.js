@@ -7,6 +7,7 @@ import GoalList from './GoalList'
 import { PomodoroContext } from '../contexts/PomodoroContext'
 import Settings from './Settings'
 import SettingsInfo from './SettingsInfo'
+import FlashMessage from './FlashMessage'
 
 function PomodoroTimer() {
   const [start, setStart] = useState(false)
@@ -17,6 +18,7 @@ function PomodoroTimer() {
   const [goal, setGoal] = useState('')
   const [goals, setGoals] = useState([])
   const [showSettings, setShowSettings] = useState(false)
+  const [flashMessage, setFlashMessage] = useState(null)
 
   const { settings } = useContext(PomodoroContext)
 
@@ -61,10 +63,17 @@ function PomodoroTimer() {
   }
 
   const addGoal = (goalText) => {
-    setGoals((prevGoals) => [
-      ...prevGoals,
-      { text: goalText, completed: false },
-    ])
+    if (goalText.trim() !== '') {
+      setGoals((prevGoals) => [
+        ...prevGoals,
+        { text: goalText, completed: false },
+      ])
+    } else {
+      setFlashMessage('Goal cannot be empty. Please enter a valid goal.')
+      setTimeout(() => {
+        setFlashMessage(null)
+      }, 3000) // this will clear the flash message after 3 seconds
+    }
   }
 
   const removeGoal = (index) => {
@@ -81,6 +90,7 @@ function PomodoroTimer() {
 
   return (
     <div className="pomodoro">
+      <FlashMessage flashMessage={flashMessage} />
       <SettingsInfo focusSessions={focusSessions} />
       <button onClick={() => setShowSettings(!showSettings)}>
         {showSettings ? 'Hide' : 'Show'} Settings
