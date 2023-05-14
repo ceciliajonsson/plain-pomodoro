@@ -31,7 +31,7 @@ function PomodoroTimer() {
       setStart(false)
     } else {
       setStart(true)
-      setKey((prevKey) => prevKey + 1)
+      //setKey((prevKey) => prevKey + 1)
     }
   }
 
