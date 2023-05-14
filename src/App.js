@@ -1,9 +1,14 @@
 import React from 'react'
 import './index.css'
 import PomodoroTimer from './components/PomodoroTimer'
+import { PomodoroProvider } from './contexts/PomodoroContext'
 
 function App() {
-  return <PomodoroTimer />
+  return (
+    <PomodoroProvider>
+      <PomodoroTimer />
+    </PomodoroProvider>
+  )
 }
 
 export default App

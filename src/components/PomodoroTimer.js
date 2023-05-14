@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import IntervalDisplay from './IntervalDisplay'
 import ControlButtons from './StartStopButtons'
 import Timer from './Timer'
 import GoalInput from './GoalInput'
 import GoalList from './GoalList'
+import { PomodoroContext } from '../contexts/PomodoroContext'
+import Settings from './Settings'
 
 function PomodoroTimer() {
   const [start, setStart] = useState(false)
@@ -13,6 +15,8 @@ function PomodoroTimer() {
   const [duration, setDuration] = useState(25 * 60)
   const [goal, setGoal] = useState('')
   const [goals, setGoals] = useState([])
+  const { settings } = useContext(PomodoroContext)
+  const [showSettings, setShowSettings] = useState(false)
 
   const handleStartStop = () => {
     if (start) {
@@ -40,6 +44,19 @@ function PomodoroTimer() {
       }
       setSession('focus') // focus
     }
+    if (session === 'focus') {
+      setFocusSessions((prevFocusSessions) => prevFocusSessions + 1)
+      if (focusSessions === settings.intervals - 1) {
+        setDuration(settings.longBreak)
+        setSession('long-break')
+      } else {
+        setDuration(settings.focusTime)
+        if (session === 'long-break') {
+          setFocusSessions(0)
+        }
+        setSession('focus')
+      }
+    }
     setKey((prevKey) => prevKey + 1)
     return [true, 1000] // repeat animation after 1 second delay
   }
@@ -65,6 +82,10 @@ function PomodoroTimer() {
 
   return (
     <div className="pomodoro">
+      <button onClick={() => setShowSettings(!showSettings)}>
+        {showSettings ? 'Hide' : 'Show'} Settings
+      </button>
+      {showSettings && <Settings setShowSettings={setShowSettings} />}
       <Timer
         start={start}
         key={key}
@@ -72,11 +93,8 @@ function PomodoroTimer() {
         duration={duration}
         handleComplete={handleComplete}
       />
-
       <IntervalDisplay focusSessions={focusSessions} />
-
       <ControlButtons start={start} handleStartStop={handleStartStop} />
-
       <GoalInput goal={goal} setGoal={setGoal} addGoal={addGoal} />
       <GoalList
         goals={goals}
