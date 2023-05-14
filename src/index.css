@@ -1,0 +1,6 @@
+.count-down-circle-timer-text {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}

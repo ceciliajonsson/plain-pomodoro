@@ -5,10 +5,23 @@ function Settings({ setShowSettings }) {
   const { settings, setSettings } = useContext(PomodoroContext)
   const [tempSettings, setTempSettings] = useState(settings)
 
+  const ranges = {
+    focusTime: { min: 60, max: 5400 },
+    shortBreak: { min: 60, max: 900 },
+    longBreak: { min: 60, max: 1800 },
+    intervals: { min: 1, max: 10 },
+  }
+
   const handleChange = (e) => {
     const { name, value } = e.target
-    const newValue =
-      name === 'intervals' ? parseInt(value) : parseInt(value) * 60
+    let newValue = name === 'intervals' ? parseInt(value) : parseInt(value) * 60
+
+    // Check if value is within the allowed range
+    if (newValue < ranges[name].min || newValue > ranges[name].max) {
+      newValue =
+        newValue < ranges[name].min ? ranges[name].min : ranges[name].max
+    }
+
     setTempSettings({
       ...tempSettings,
       [name]: newValue,
@@ -29,6 +42,7 @@ function Settings({ setShowSettings }) {
           name="focusTime"
           value={tempSettings.focusTime / 60}
           onChange={handleChange}
+          max={ranges.focusTime.max / 60}
         />
       </label>
       <label>
@@ -38,6 +52,7 @@ function Settings({ setShowSettings }) {
           name="shortBreak"
           value={tempSettings.shortBreak / 60}
           onChange={handleChange}
+          max={ranges.shortBreak.max / 60}
         />
       </label>
       <label>
@@ -47,6 +62,7 @@ function Settings({ setShowSettings }) {
           name="longBreak"
           value={tempSettings.longBreak / 60}
           onChange={handleChange}
+          max={ranges.longBreak.max / 60}
         />
       </label>
       <label>
@@ -56,6 +72,7 @@ function Settings({ setShowSettings }) {
           name="intervals"
           value={tempSettings.intervals}
           onChange={handleChange}
+          max={ranges.intervals.max}
         />
       </label>
       <button onClick={handleSave}>Save</button>
