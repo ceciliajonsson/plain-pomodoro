@@ -5,8 +5,9 @@ function Timer({ start, timerKey, session, duration, handleComplete }) {
   const timerProps = {
     isPlaying: start,
     key: timerKey,
-    size: 120,
-    strokeWidth: 6,
+    size: 220,
+    strokeWidth: 8,
+    trailColor: '#1b323b',
   }
 
   const sessionTitle = session === 'focus' ? 'Focus' : 'Break'
@@ -15,7 +16,7 @@ function Timer({ start, timerKey, session, duration, handleComplete }) {
     <div className="count-down-circle-timer">
       <CountdownCircleTimer
         {...timerProps}
-        colors={session === 'focus' ? [['#EF798A']] : [['#218380']]}
+        colors={session === 'focus' ? [['#7895A1']] : [['#196361']]}
         duration={duration}
         onComplete={handleComplete}
       >
@@ -25,7 +26,7 @@ function Timer({ start, timerKey, session, duration, handleComplete }) {
           return (
             <>
               <div className="count-down-circle-timer-text">
-                <p>{sessionTitle}</p>
+                <h3>{sessionTitle}</h3>
                 <p>
                   {minutes}:{seconds < 10 ? '0' + seconds : seconds}
                 </p>

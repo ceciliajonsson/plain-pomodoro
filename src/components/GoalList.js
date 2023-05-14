@@ -6,14 +6,18 @@ function GoalList({ goals, removeGoal, toggleCompletion }) {
       {goals.map((goal, index) => (
         <div key={index} className="goal-item">
           <span
+            className="goal-item-text"
             style={{ textDecoration: goal.completed ? 'line-through' : 'none' }}
           >
             {goal.text}
           </span>
-          <button onClick={() => toggleCompletion(index)}>
-            {goal.completed ? 'Undo' : 'Complete'}
-          </button>
-          <button onClick={() => removeGoal(index)}>Delete</button>
+          <div className="goal-item-buttons">
+            <button onClick={() => removeGoal(index)}>Delete</button>
+
+            <button onClick={() => toggleCompletion(index)}>
+              {goal.completed ? 'Undo' : 'Complete'}
+            </button>
+          </div>
         </div>
       ))}
     </div>

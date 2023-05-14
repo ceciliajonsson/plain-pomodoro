@@ -93,31 +93,38 @@ function PomodoroTimer() {
       <SettingsInfo focusSessions={focusSessions} />
 
       <div className="pomodoro">
-        <FlashMessage flashMessage={flashMessage} />
-
-        <button onClick={() => setShowSettings(!showSettings)}>
-          {showSettings ? 'Hide' : 'Show'} Settings
-        </button>
-        {showSettings && <Settings setShowSettings={setShowSettings} />}
-        <Timer
-          start={start}
-          timerKey={key}
-          session={session}
-          duration={duration}
-          handleComplete={handleComplete}
-        />
-        {/* <IntervalDisplay
+        <h1>Pomodoro App</h1>
+        <p>Focus</p>
+        <div className="time-wrapper">
+          <Timer
+            start={start}
+            timerKey={key}
+            session={session}
+            duration={duration}
+            handleComplete={handleComplete}
+          />
+          {/* <IntervalDisplay
         focusSessions={focusSessions}
         intervals={settings.intervals}
       /> */}
-        <ControlButtons start={start} handleStartStop={handleStartStop} />
+        </div>
+        <div className="start-setting-buttons">
+          <ControlButtons start={start} handleStartStop={handleStartStop} />
+          <button onClick={() => setShowSettings(!showSettings)}>
+            {showSettings ? 'Hide' : 'Show'} Settings
+          </button>
+          {showSettings && <Settings setShowSettings={setShowSettings} />}
+        </div>
         <GoalInput goal={goal} setGoal={setGoal} addGoal={addGoal} />
+        <FlashMessage flashMessage={flashMessage} />
+
         <GoalList
           goals={goals}
           removeGoal={removeGoal}
           toggleCompletion={toggleCompletion}
         />
       </div>
+      <div className="footer"></div>
     </div>
   )
 }
