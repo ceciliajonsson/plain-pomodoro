@@ -1,10 +1,10 @@
 import React from 'react'
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 
-function Timer({ start, key, session, duration, handleComplete }) {
+function Timer({ start, timerKey, session, duration, handleComplete }) {
   const timerProps = {
     isPlaying: start,
-    key: key,
+    key: timerKey,
     size: 120,
     strokeWidth: 6,
   }
@@ -25,10 +25,10 @@ function Timer({ start, key, session, duration, handleComplete }) {
           return (
             <>
               <div className="count-down-circle-timer-text">
-                <text>{sessionTitle}</text>
-                <text>
+                <p>{sessionTitle}</p>
+                <p>
                   {minutes}:{seconds < 10 ? '0' + seconds : seconds}
-                </text>
+                </p>
               </div>
             </>
           )

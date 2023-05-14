@@ -2,7 +2,7 @@ import React from 'react'
 
 function FlashMessage({ flashMessage }) {
   return (
-    <div className="pomodoro">
+    <div className="flash-message">
       {flashMessage && <div className="flash-message">{flashMessage}</div>}
       {/*...rest of your code*/}
     </div>

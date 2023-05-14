@@ -89,31 +89,35 @@ function PomodoroTimer() {
   }
 
   return (
-    <div className="pomodoro">
-      <FlashMessage flashMessage={flashMessage} />
+    <div>
       <SettingsInfo focusSessions={focusSessions} />
-      <button onClick={() => setShowSettings(!showSettings)}>
-        {showSettings ? 'Hide' : 'Show'} Settings
-      </button>
-      {showSettings && <Settings setShowSettings={setShowSettings} />}
-      <Timer
-        start={start}
-        key={key}
-        session={session}
-        duration={duration}
-        handleComplete={handleComplete}
-      />
-      {/* <IntervalDisplay
+
+      <div className="pomodoro">
+        <FlashMessage flashMessage={flashMessage} />
+
+        <button onClick={() => setShowSettings(!showSettings)}>
+          {showSettings ? 'Hide' : 'Show'} Settings
+        </button>
+        {showSettings && <Settings setShowSettings={setShowSettings} />}
+        <Timer
+          start={start}
+          timerKey={key}
+          session={session}
+          duration={duration}
+          handleComplete={handleComplete}
+        />
+        {/* <IntervalDisplay
         focusSessions={focusSessions}
         intervals={settings.intervals}
       /> */}
-      <ControlButtons start={start} handleStartStop={handleStartStop} />
-      <GoalInput goal={goal} setGoal={setGoal} addGoal={addGoal} />
-      <GoalList
-        goals={goals}
-        removeGoal={removeGoal}
-        toggleCompletion={toggleCompletion}
-      />
+        <ControlButtons start={start} handleStartStop={handleStartStop} />
+        <GoalInput goal={goal} setGoal={setGoal} addGoal={addGoal} />
+        <GoalList
+          goals={goals}
+          removeGoal={removeGoal}
+          toggleCompletion={toggleCompletion}
+        />
+      </div>
     </div>
   )
 }
