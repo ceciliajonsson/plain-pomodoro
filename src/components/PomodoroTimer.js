@@ -94,7 +94,9 @@ function PomodoroTimer() {
 
       <div className="pomodoro">
         <h1>Pomodoro App</h1>
-        <p>Focus</p>
+        <p>
+          Supercharge your productivity with the Pomodoro technique! <br />
+        </p>
         <div className="time-wrapper">
           <Timer
             start={start}

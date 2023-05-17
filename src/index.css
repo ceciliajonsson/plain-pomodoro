@@ -73,7 +73,7 @@ button {
   margin-top: 5px;
 }
 .hidenshow-setting-button {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 .count-down-circle-timer-text {
   flex-direction: column;
@@ -144,17 +144,23 @@ button {
 
 
 .pomodoro {
-  padding-top: 9vw;
+  padding-top: 8vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background: radial-gradient(circle, #e0e0d5 0%, #f0f0ea 65%);
-  padding-bottom: 9vw;
+  padding-bottom: 8vw;
 }
 
-
-
+.pomodoro h1+p{
+    width: 50vw;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    
+    
+}
 
 label {
   font-family: 'Sora', sans-serif;
@@ -221,6 +227,14 @@ span {
 display: block;
   width: 30vw;
   word-wrap: break-word;
+}
+
+.flash-message {
+  font-family: 'Poltawski Nowy', serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #264653;
+    line-height: 2;
 }
 
 @media screen and (max-width: 1050px) {
