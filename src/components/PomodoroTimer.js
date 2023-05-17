@@ -108,11 +108,13 @@ function PomodoroTimer() {
         intervals={settings.intervals}
       /> */}
         </div>
-        <div className="start-setting-buttons">
+        <div className="start-setting-button">
           <ControlButtons start={start} handleStartStop={handleStartStop} />
-          <button onClick={() => setShowSettings(!showSettings)}>
-            {showSettings ? 'Hide' : 'Show'} Settings
-          </button>
+          <div className="hidenshow-setting-button">
+            <button onClick={() => setShowSettings(!showSettings)}>
+              {showSettings ? 'Hide' : 'Show'} Settings
+            </button>
+          </div>
           {showSettings && <Settings setShowSettings={setShowSettings} />}
         </div>
         <GoalInput goal={goal} setGoal={setGoal} addGoal={addGoal} />

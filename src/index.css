@@ -18,6 +18,7 @@ h1 {
   color: #f0f0ea;
   line-height: 0px;
   margin-bottom: 4px;
+  letter-spacing: .1rem;
 }
 
 .count-down-circle-timer-text p {
@@ -45,6 +46,7 @@ button {
   margin-bottom: 0.2rem;
   background: #264653;
   min-width: 80px;
+  letter-spacing: .035rem;
 }
 .goal-item-buttons button {
   font-family: 'Sora', sans-serif;
@@ -60,11 +62,18 @@ button {
   min-width: 80px;
   
 }
-.start-setting-buttons {
+
+.start-setting-button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
   display: flex;
+}
+.start-stop-button {
+  margin-top: 5px;
+}
+.hidenshow-setting-button {
+  margin-bottom: 10px;
 }
 .count-down-circle-timer-text {
   flex-direction: column;
@@ -86,6 +95,7 @@ button {
   padding: 0em .25em;
   display: flex;
   color: #f0f0ea;
+  letter-spacing: .035rem;
 }
 
 .settings-info p {
@@ -102,6 +112,7 @@ button {
   text-align: left;
   width: 30vw;
   padding: 20px;
+  margin-bottom: 20px;
   
 }
 .settings input{
@@ -133,13 +144,13 @@ button {
 
 
 .pomodoro {
-  padding-top: 10vw;
+  padding-top: 9vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background: radial-gradient(circle, #e0e0d5 0%, #f0f0ea 65%);
-  padding-bottom: 10vw;
+  padding-bottom: 9vw;
 }
 
 
@@ -163,7 +174,6 @@ label {
   border-style: dotted;
   border-color: #264653;
   margin-bottom: 10px;
-  margin-top: 20px;
 }
 
 textarea {
@@ -173,9 +183,9 @@ textarea {
   background-color: #f0f0ea;
   font-size: 16px;
   resize: none;
-    font-family: 'Sora', sans-serif;
-      font-weight: 300;
-      color: #545454;
+  font-family: 'Sora', sans-serif;
+  font-weight: 300;
+  color: #545454;
   margin-bottom: 10px;
   border: 2px dotted #264653;
 
@@ -212,15 +222,42 @@ display: block;
   width: 30vw;
   word-wrap: break-word;
 }
-@media screen and (max-width: 991px) {
+
+@media screen and (max-width: 1050px) {
+
+  .settings {
+      width: 60vw;
+    }
+  .goal-input {
+      width: 60vw;
+    }
   
+  .goal-item {
+    width: 60vw;
+  }
 }
 
-@media screen and (max-width: 800px) {
-  .settings-info {
-    text-align: center;
-    flex-direction: column;
+@media screen and (max-width: 767px) {
+  .settings {
+      width: 80vw;
+    }
+  .goal-input {
+      width: 80vw;
+    }
+  .goal-item {
+    width: 80vw;
   }
+}
 
- 
+@media screen and (max-width: 479px) {
+  .settings {
+      width: 80vw;
+    }
+  .goal-input {
+      width: 80vw;
+    }
+  .goal-item {
+    width: 80vw;
+      
+  }
 }
