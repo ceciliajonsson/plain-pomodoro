@@ -1,12 +1,15 @@
 import React from 'react'
 
-function GoalList({ goals, removeGoal, toggleCompletion }) {
+function GoalList({ goals, removeGoal, toggleCompletion, timestamp }) {
   return (
     <div className="goal-list">
       {goals.map((goal, index) => (
         <div key={index} className="goal-item">
+          <div className="goal-date-holder">
+            <small>{goal.timestamp}</small>
+          </div>
           <span
-            className="goal-item-text"
+            lassName="goal-item-text"
             style={{ textDecoration: goal.completed ? 'line-through' : 'none' }}
           >
             {goal.text}

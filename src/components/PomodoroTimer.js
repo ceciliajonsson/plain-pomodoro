@@ -64,10 +64,27 @@ function PomodoroTimer() {
 
   const addGoal = (goalText) => {
     if (goalText.trim() !== '') {
-      const newGoal = { text: goalText, completed: false }
-      setGoals((prevGoals) =>
-        [newGoal, ...prevGoals].sort((a, b) => b.id - a.id)
-      )
+      const currentDate = new Date()
+      const day = currentDate.toLocaleString('en-US', { day: '2-digit' })
+      const month = currentDate.toLocaleString('en-US', { month: 'long' })
+      const year = currentDate.toLocaleString('en-US', { year: 'numeric' })
+      const hour = currentDate.getHours().toString().padStart(2, '0')
+      const minute = currentDate.getMinutes().toString().padStart(2, '0')
+
+      const timestamp = `${day} ${month} ${year}, ${hour}:${minute}`
+
+      const newGoal = {
+        text: goalText,
+        completed: false,
+        timestamp: timestamp,
+      }
+
+      setGoals((prevGoals) => {
+        const updatedGoals = [newGoal, ...prevGoals]
+        return updatedGoals.sort(
+          (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
+        )
+      })
     } else {
       setFlashMessage('Goal cannot be empty. Please enter a valid goal.')
       setTimeout(() => {
@@ -126,6 +143,7 @@ function PomodoroTimer() {
           goals={goals}
           removeGoal={removeGoal}
           toggleCompletion={toggleCompletion}
+          timestamp={goal.timestamp}
         />
       </div>
       <div className="footer"></div>
