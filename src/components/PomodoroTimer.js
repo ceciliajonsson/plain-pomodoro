@@ -64,10 +64,10 @@ function PomodoroTimer() {
 
   const addGoal = (goalText) => {
     if (goalText.trim() !== '') {
-      setGoals((prevGoals) => [
-        ...prevGoals,
-        { text: goalText, completed: false },
-      ])
+      const newGoal = { text: goalText, completed: false }
+      setGoals((prevGoals) =>
+        [newGoal, ...prevGoals].sort((a, b) => b.id - a.id)
+      )
     } else {
       setFlashMessage('Goal cannot be empty. Please enter a valid goal.')
       setTimeout(() => {
