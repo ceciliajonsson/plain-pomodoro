@@ -8,6 +8,7 @@ import { PomodoroContext } from '../contexts/PomodoroContext'
 import Settings from './Settings'
 import SettingsInfo from './SettingsInfo'
 import FlashMessage from './FlashMessage'
+import TimerSound from '../assets/sounds/owl-hooting-48028.mp3'
 
 function PomodoroTimer() {
   const [start, setStart] = useState(false)
@@ -19,6 +20,7 @@ function PomodoroTimer() {
   const [goals, setGoals] = useState([])
   const [showSettings, setShowSettings] = useState(false)
   const [flashMessage, setFlashMessage] = useState(null)
+  const [playTimerSound, setPlayTimerSound] = useState(false)
 
   const { settings } = useContext(PomodoroContext)
 
@@ -27,6 +29,14 @@ function PomodoroTimer() {
     setSession('focus')
     setKey((prevKey) => prevKey + 1) // Reset the timer
   }, [settings])
+
+  useEffect(() => {
+    if (playTimerSound) {
+      const audio = new Audio(TimerSound)
+      audio.play()
+      setPlayTimerSound(false)
+    }
+  }, [playTimerSound])
 
   const handleStartStop = () => {
     if (start) {
@@ -38,15 +48,17 @@ function PomodoroTimer() {
   }
 
   const handleComplete = () => {
+    setPlayTimerSound(true)
     let newFocusSessions = focusSessions
+
     if (session === 'focus') {
       newFocusSessions = focusSessions + 1
       setFocusSessions(newFocusSessions)
       if (newFocusSessions === settings.intervals) {
-        setDuration(settings.longBreak) // long-break
+        setDuration(settings.longBreak)
         setSession('long-break')
       } else {
-        setDuration(settings.shortBreak) // short-break
+        setDuration(settings.shortBreak)
         setSession('short-break')
       }
     } else if (session === 'short-break' || session === 'long-break') {
@@ -54,12 +66,12 @@ function PomodoroTimer() {
         newFocusSessions = 0
         setFocusSessions(newFocusSessions)
       }
-      setDuration(settings.focusTime) // focus
+      setDuration(settings.focusTime)
       setSession('focus')
     }
 
     setKey((prevKey) => prevKey + 1)
-    return [true, 1000] // repeat animation after 1 second delay
+    return [true, 1000]
   }
 
   const addGoal = (goalText) => {
