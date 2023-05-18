@@ -126,7 +126,11 @@ button {
   font-family: 'Sora', sans-serif;
   font-weight: 300;
   text-align: left;
+  margin-top: 2px !important;
 
+}
+.settings label {
+margin-bottom: 10px !important;
 }
 .time-wrapper {
   display: flex;
@@ -257,6 +261,30 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+input:focus {
+  background-color: yellow;
+}
+input:focus,
+textarea:focus {
+  /* CSS properties for the focus state */
+  outline: 2px solid blue;
+  /* Additional styles as desired */
+}
+
+@media screen and (max-width: 1300px) {
+
+  .settings {
+    width: 40vw;
+  }
+
+  .goal-input {
+    width: 40vw;
+  }
+
+  .goal-item {
+    width: 40vw;
+  }
+}
 
 @media screen and (max-width: 1050px) {
 
@@ -271,6 +299,7 @@ input[type=number]::-webkit-outer-spin-button {
     width: 60vw;
   }
 }
+
 
 @media screen and (max-width: 767px) {
   .settings {
