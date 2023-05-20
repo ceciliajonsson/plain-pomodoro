@@ -40,6 +40,10 @@ function PomodoroTimer() {
     }
   }, [playTimerSound])
 
+  useEffect(() => {
+    localStorage.setItem('goals', JSON.stringify(goals))
+  }, [goals])
+
   const handleStartStop = () => {
     if (start) {
       setStart(false)
@@ -95,11 +99,10 @@ function PomodoroTimer() {
 
       setGoals((prevGoals) => {
         const updatedGoals = [newGoal, ...prevGoals]
-        const sortedGoals = updatedGoals.sort(
+        localStorage.setItem('goals', JSON.stringify(updatedGoals))
+        return updatedGoals.sort(
           (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
         )
-        localStorage.setItem('goals', JSON.stringify(sortedGoals))
-        return sortedGoals
       })
     } else {
       setFlashMessage('Goal cannot be empty. Please enter a valid goal.')
@@ -116,12 +119,15 @@ function PomodoroTimer() {
       return updatedGoals
     })
   }
-
   const toggleCompletion = (index) => {
     setGoals((prevGoals) =>
-      prevGoals.map((goal, i) =>
-        i === index ? { ...goal, completed: !goal.completed } : goal
-      )
+      prevGoals.map((goal, i) => {
+        const updatedGoal =
+          i === index ? { ...goal, completed: !goal.completed } : goal
+        // Save the updated goals to localStorage
+        localStorage.setItem('goals', JSON.stringify(prevGoals))
+        return updatedGoal
+      })
     )
   }
 
