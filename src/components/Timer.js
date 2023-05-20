@@ -28,7 +28,8 @@ function Timer({ start, timerKey, session, duration, handleComplete }) {
               <div className="count-down-circle-timer-text">
                 <h3>{sessionTitle}</h3>
                 <p>
-                  {minutes}:{seconds < 10 ? '0' + seconds : seconds}
+                  {minutes.toString().padStart(2, '0')}:
+                  {seconds < 10 ? '0' + seconds : seconds}
                 </p>
               </div>
             </>

@@ -132,7 +132,7 @@ function PomodoroTimer() {
       <div className="pomodoro">
         <h1>Plain Pomodoro</h1>
         <p>
-          Supercharge your productivity with the Pomodoro technique! <br />
+          Supercharge your productivity with the Pomodoro technique. <br />
         </p>
         <div className="time-wrapper">
           <Timer
