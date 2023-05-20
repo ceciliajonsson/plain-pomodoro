@@ -9,7 +9,7 @@ function GoalList({ goals, removeGoal, toggleCompletion, timestamp }) {
             <small>{goal.timestamp}</small>
           </div>
           <span
-            lassName="goal-item-text"
+            className="goal-item-text"
             style={{ textDecoration: goal.completed ? 'line-through' : 'none' }}
           >
             {goal.text}

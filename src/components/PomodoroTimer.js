@@ -130,7 +130,7 @@ function PomodoroTimer() {
       <SettingsInfo focusSessions={focusSessions} />
 
       <div className="pomodoro">
-        <h1>Pomodoro App</h1>
+        <h1>Plain Pomodoro</h1>
         <p>
           Supercharge your productivity with the Pomodoro technique! <br />
         </p>
