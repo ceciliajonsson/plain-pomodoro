@@ -1,10 +1,10 @@
 import React from 'react'
 
-function GoalList({ goals, removeGoal, toggleCompletion, timestamp }) {
+function GoalList({ goals, removeGoal, toggleCompletion }) {
   return (
     <div className="goal-list">
       {goals.map((goal, index) => (
-        <div key={index} className="goal-item">
+        <div key={index} className="goal-item" data-testid={`goal-${index}`}>
           <div className="goal-date-holder">
             <small>{goal.timestamp}</small>
           </div>
