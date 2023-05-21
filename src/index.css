@@ -51,8 +51,23 @@ button {
   background: #264653;
   min-width: 80px;
   letter-spacing: .035rem;
+  cursor: pointer;
+  transition-duration: 0.4s;
 }
-.goal-item-buttons button {
+
+button:hover {
+  background-color: #C7C7BD;
+  color: #264653;
+  font-weight: 400;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05), 0 6px 5px 0 rgba(0, 0, 0, 0.05);
+}
+.secondary-button:hover {
+  background-color: #264653;
+  color: #f0f0ea;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 5px 0 rgba(0, 0, 0, 0.05);
+}
+
+.secondary-button {
   font-family: 'Sora', sans-serif;
   font-weight: 400;
   color: #264653;
@@ -64,6 +79,9 @@ button {
   margin-bottom: 0.2rem;
   background: #C7C7BD;
   min-width: 80px;
+  margin-right: 0.2rem;
+  transition-duration: 0.4s;
+  
   
 }
 
@@ -224,11 +242,9 @@ textarea {
   justify-content: flex-start;
   align-items: flex-end;
   display: flex;
+      margin-top: 20px;
 }
-.goal-item-buttons button {
-  margin-top: 20px;
-  margin-right: 0.2rem;
-}
+
 span {
 display: block;
   width: 100%;

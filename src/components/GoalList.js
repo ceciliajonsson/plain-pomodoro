@@ -15,9 +15,17 @@ function GoalList({ goals, removeGoal, toggleCompletion }) {
             {goal.text}
           </span>
           <div className="goal-item-buttons">
-            <button onClick={() => removeGoal(index)}>Delete</button>
+            <button
+              className="secondary-button"
+              onClick={() => removeGoal(index)}
+            >
+              Delete
+            </button>
 
-            <button onClick={() => toggleCompletion(index)}>
+            <button
+              className="secondary-button"
+              onClick={() => toggleCompletion(index)}
+            >
               {goal.completed ? 'Undo' : 'Complete'}
             </button>
           </div>
