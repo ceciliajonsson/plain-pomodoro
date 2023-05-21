@@ -3,33 +3,53 @@ import { PomodoroContext } from '../contexts/PomodoroContext'
 
 function Settings({ setShowSettings }) {
   const { settings, setSettings } = useContext(PomodoroContext)
-  const [tempSettings, setTempSettings] = useState(settings)
+  const [tempSettings, setTempSettings] = useState({
+    focusTime: settings.focusTime / 60,
+    shortBreak: settings.shortBreak / 60,
+    longBreak: settings.longBreak / 60,
+    intervals: settings.intervals,
+  })
+  const [error, setError] = useState('') // New state to hold an error message
 
   const ranges = {
-    focusTime: { min: 60, max: 5400 },
-    shortBreak: { min: 60, max: 900 },
-    longBreak: { min: 60, max: 1800 },
+    focusTime: { min: 1, max: 90 },
+    shortBreak: { min: 1, max: 15 },
+    longBreak: { min: 1, max: 30 },
     intervals: { min: 1, max: 10 },
   }
 
   const handleChange = (e) => {
     const { name, value } = e.target
-    let newValue = name === 'intervals' ? parseInt(value) : parseInt(value) * 60
-
-    // Check if value is within the allowed range
-    if (newValue < ranges[name].min || newValue > ranges[name].max) {
-      newValue =
-        newValue < ranges[name].min ? ranges[name].min : ranges[name].max
-    }
-
+    setError('') // Reset error message when the user starts typing
     setTempSettings({
       ...tempSettings,
-      [name]: newValue,
+      [name]: value,
     })
   }
 
   const handleSave = () => {
-    setSettings(tempSettings)
+    let newSettings = {}
+    const fieldNames = {
+      focusTime: 'Focus time',
+      shortBreak: 'Short break',
+      longBreak: 'Long break',
+      intervals: 'Intervals',
+    }
+    for (let key in tempSettings) {
+      let parsedValue = parseInt(tempSettings[key])
+      if (
+        isNaN(parsedValue) ||
+        parsedValue < ranges[key].min ||
+        parsedValue > ranges[key].max
+      ) {
+        setError(
+          `Please enter a valid number for ${fieldNames[key]} between ${ranges[key].min} and ${ranges[key].max}.`
+        )
+        return
+      }
+      newSettings[key] = key === 'intervals' ? parsedValue : parsedValue * 60
+    }
+    setSettings(newSettings)
     setShowSettings(false)
   }
 
@@ -40,9 +60,8 @@ function Settings({ setShowSettings }) {
         <input
           type="number"
           name="focusTime"
-          value={tempSettings.focusTime / 60}
+          value={tempSettings.focusTime}
           onChange={handleChange}
-          max={ranges.focusTime.max / 60}
         />
       </label>
       <label>
@@ -50,9 +69,8 @@ function Settings({ setShowSettings }) {
         <input
           type="number"
           name="shortBreak"
-          value={tempSettings.shortBreak / 60}
+          value={tempSettings.shortBreak}
           onChange={handleChange}
-          max={ranges.shortBreak.max / 60}
         />
       </label>
       <label>
@@ -60,9 +78,8 @@ function Settings({ setShowSettings }) {
         <input
           type="number"
           name="longBreak"
-          value={tempSettings.longBreak / 60}
+          value={tempSettings.longBreak}
           onChange={handleChange}
-          max={ranges.longBreak.max / 60}
         />
       </label>
       <label>
@@ -72,9 +89,9 @@ function Settings({ setShowSettings }) {
           name="intervals"
           value={tempSettings.intervals}
           onChange={handleChange}
-          max={ranges.intervals.max}
         />
       </label>
+      {error && <p>{error}</p>} {/* Display error message if it exists */}
       <button onClick={handleSave}>Save</button>
     </div>
   )
