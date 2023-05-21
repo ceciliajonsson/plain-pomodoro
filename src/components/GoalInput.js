@@ -8,8 +8,12 @@ function GoalInput({ goal, setGoal, addGoal }) {
   }
   return (
     <form className="goal-input" onSubmit={handleSubmit}>
-      <label>Enter your goal for the session:</label>
-      <textarea value={goal} onChange={(e) => setGoal(e.target.value)} />
+      <label htmlFor="goal-textarea"> Enter your goal for the session:</label>
+      <textarea
+        id="goal-textarea"
+        value={goal}
+        onChange={(e) => setGoal(e.target.value)}
+      />
       <button type="submit">Submit</button>
     </form>
   )
