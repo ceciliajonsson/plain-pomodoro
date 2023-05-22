@@ -110,7 +110,7 @@ button:hover {
     align-items: center;
     display: flex;
   letter-spacing: .035rem;
-  min-height: 48px;
+  min-height: 38px;
 }
 
 .footer p {
@@ -127,6 +127,8 @@ button:hover {
   align-items: flex-start;
   display: flex;
   letter-spacing: .035rem;
+  min-height: 38px;
+  align-items: center;
 }
 
 .settings-info p {
