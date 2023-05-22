@@ -11,10 +11,10 @@ function SettingsInfo({ focusSessions }) {
 
   return (
     <div className="settings-info">
-      <p>Time for focused work: {formatTime(settings.focusTime)}</p>
+      <p>Duration of focused work: {formatTime(settings.focusTime)}</p>
       <p>Duration of short breaks: {formatTime(settings.shortBreak)}</p>
       <p>Duration of long breaks: {formatTime(settings.longBreak)}</p>
-      <p>Number of focus sessions before a long break: {settings.intervals}</p>
+      <p>Number of focus sessions: {settings.intervals}</p>
       <p>Completed focus sessions: {focusSessions}</p>
     </div>
   )

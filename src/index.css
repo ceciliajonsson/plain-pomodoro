@@ -82,8 +82,6 @@ button:hover {
   min-width: 80px;
   margin-right: 0.2rem;
   transition-duration: 0.4s;
-  
-  
 }
 
 .start-setting-button {
@@ -105,9 +103,21 @@ button:hover {
   display: flex;
 }
 .footer {
-    width: 100vw;
-    background-color: #264653;
-    height: 42px;
+  width: 100vw;
+  background-color: #264653;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  letter-spacing: .035rem;
+  min-height: 48px;
+}
+
+.footer p {
+  font-size: 12px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #f0f0ea;
 }
 
 .settings-info {

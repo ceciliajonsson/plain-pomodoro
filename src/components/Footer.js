@@ -1,18 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 const Footer = () => {
-  const [expanded, setExpanded] = useState(false)
-
-  const toggleFooter = () => {
-    setExpanded(!expanded)
-  }
-
   return (
-    <div
-      className={`footer ${expanded ? 'expanded' : ''}`}
-      onClick={toggleFooter}
-    >
-      <div className="footer-content">{<small>small</small>}</div>
+    <div className="footer">
+      <div className="footer-content">{<p>About</p>}</div>
+      <div className="footer-content">{<p>Download</p>}</div>
     </div>
   )
 }
