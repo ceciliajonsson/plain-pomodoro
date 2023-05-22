@@ -8,11 +8,22 @@ h1 {
   font-weight: 400;
   font-size: 48px;
   color: #264653;
-  text-align: center;
   margin-bottom: 0px;
   margin-top: 0px;
-  
+  line-height: 1.25;
 }
+
+h2 {
+  font-family: 'Poltawski Nowy', serif;
+  font-weight: 400;
+  font-size: 36px;
+  color: #264653;
+  margin-bottom: 0px;
+  margin-top: 10px;
+  line-height: 1.25;
+
+}
+
 .count-down-circle-timer-text h3 {
   font-family: 'Poltawski Nowy', serif;
   font-weight: 400;
@@ -21,12 +32,14 @@ h1 {
   line-height: 0px;
   margin-bottom: 4px;
   letter-spacing: .1rem;
+
 }
 
 .count-down-circle-timer-text p {
   font-family: 'Sora', sans-serif;
   font-weight: 100;
   color: #f0f0ea;
+  line-height: 1;
 }
 
 p {
@@ -34,6 +47,7 @@ p {
   font-weight: 300;
   font-size: 16px;
   color: #545454;
+  line-height: 1.5;
 
   
 }
@@ -84,6 +98,21 @@ button:hover {
   transition-duration: 0.4s;
 }
 
+ul, ol {
+  margin-left: 10px;
+  padding-left: 5px;
+  font-family: 'Sora', sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  color: #545454;
+  line-height: 1.5;
+}
+ol {
+  padding-left: 9px;
+}
+ul li, ol li {
+  margin-bottom: 10px;
+}
 .start-setting-button {
   flex-direction: column;
   justify-content: center;
@@ -118,6 +147,7 @@ button:hover {
   padding-left: 5px;
   padding-right: 5px;
   color: #f0f0ea;
+  line-height: 0;
 }
 
 .settings-info {
@@ -128,7 +158,7 @@ button:hover {
   display: flex;
   letter-spacing: .035rem;
   min-height: 38px;
-  align-items: center;
+  align-items: top;
 }
 
 .settings-info p {
@@ -136,6 +166,7 @@ button:hover {
   padding-left: 5px;
   padding-right: 5px;
   color: #f0f0ea;
+  line-height: 1.1;
 }
 .settings {
   border: 2px dotted #264653;
@@ -196,8 +227,19 @@ margin-bottom: 10px !important;
     text-align: center;
     margin-bottom: 20px;
     margin-top: 5px;
-    
-    
+}
+
+.about-page {
+  background-color: #f0f0ea;
+  width: 100vw;
+}
+.about-page-content {
+padding-bottom: 8vw;
+padding-top: 8vw;
+padding-left: 5vw;
+padding-right: 5vw;
+width: 50vw;
+  
 }
 
 label {
@@ -302,55 +344,38 @@ textarea:focus {
 
 @media screen and (max-width: 1300px) {
 
-  .settings {
-    width: 40vw;
-  }
-
-  .goal-input {
-    width: 40vw;
-  }
-
-  .goal-item {
+  .settings, .goal-input, .goal-item {
     width: 40vw;
   }
 }
 
 @media screen and (max-width: 1050px) {
 
-  .settings {
+  .settings, .goal-input, .goal-item {
       width: 60vw;
     }
-  .goal-input {
-      width: 60vw;
-    }
-  
-  .goal-item {
-    width: 60vw;
-  }
+.about-page-content {
+ width: 70vw;
+    padding-left: 2.5vw;
+      padding-right: 2.5vw;
+ }
 }
 
 
 @media screen and (max-width: 767px) {
-  .settings {
+  .settings, .goal-input, .goal-item {
       width: 80vw;
-    }
-  .goal-input {
-      width: 80vw;
-    }
-  .goal-item {
-    width: 80vw;
   }
+  .about-page-content {
+    width: 90vw;
+
+  }
+
+
 }
 
 @media screen and (max-width: 479px) {
-  .settings {
+  .settings, .goal-input, .goal-item {
       width: 80vw;
     }
-  .goal-input {
-      width: 80vw;
-    }
-  .goal-item {
-    width: 80vw;
-      
-  }
 }
