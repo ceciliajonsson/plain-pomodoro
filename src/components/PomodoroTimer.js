@@ -9,6 +9,7 @@ import Settings from './Settings'
 import SettingsInfo from './SettingsInfo'
 import FlashMessage from './FlashMessage'
 import TimerSound from '../assets/sounds/owl-hooting-48028.mp3'
+import Footer from './Footer'
 
 function PomodoroTimer() {
   const [start, setStart] = useState(false)
@@ -172,7 +173,7 @@ function PomodoroTimer() {
           timestamp={goal.timestamp}
         />
       </div>
-      <div className="footer"></div>
+      <Footer />
     </div>
   )
 }
