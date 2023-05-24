@@ -132,22 +132,33 @@ ul li, ol li {
   display: flex;
 }
 .footer {
-  width: 100vw;
   background-color: #264653;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    display: flex;
+    justify-content: space-between;
+  align-items: flex-start;
+  display: flex;
+  align-items: center;
   letter-spacing: .035rem;
   min-height: 38px;
+  flex-direction: row;
+  padding-left: 5vw;
+  padding-right: 5vw;
+
+
 }
 
-.footer p {
+.footer-content {
   font-size: 12px;
   padding-left: 5px;
   padding-right: 5px;
   color: #f0f0ea;
-  line-height: 0;
+  line-height: 1.1;
+  text-decoration: none;
+    font-family: 'Sora', sans-serif;
+      font-weight: 300;
+      color: #f0f0ea;
+}
+.footer-content:hover {
+  text-decoration: underline;
 }
 
 .settings-info {
@@ -156,6 +167,7 @@ ul li, ol li {
   justify-content: space-around;
   align-items: flex-start;
   display: flex;
+  align-items: top;
   letter-spacing: .035rem;
   min-height: 38px;
   align-items: top;
@@ -210,7 +222,12 @@ margin-bottom: 10px !important;
   box-shadow: 1rem 1.5rem 2rem rgba(27, 50, 59, .7);
 }
 
-
+button:disabled,
+button[disabled] {
+  border: 1px solid #999999;
+  background-color: blue;
+  color: #666666;
+}
 
 .pomodoro {
   padding-top: 8vw;
@@ -370,8 +387,6 @@ textarea:focus {
     width: 90vw;
 
   }
-
-
 }
 
 @media screen and (max-width: 479px) {

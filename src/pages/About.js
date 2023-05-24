@@ -1,6 +1,7 @@
 import React from 'react'
-import SettingsInfo from './SettingsInfo'
-import Footer from './Footer'
+import SettingsInfo from '../components/SettingsInfo'
+import Footer from '../components/Footer'
+import DownloadPWAButton from '../components/DownloadPWAButton'
 
 function About() {
   return (
@@ -92,14 +93,11 @@ function About() {
             notifications in some cases.
           </li>
           <li>
-            The app relies on browser timers, which may not be as precise as
-            native timers.
-          </li>
-          <li>
             The app may not work optimally on older or unsupported browsers.
           </li>
         </ul>
         <h2>Recommendation for a More Reliable and Consistent Experience</h2>
+
         <p>
           In some browser environments, the Pomodoro App may not function as
           expected when accessed directly via a browser URL. However, the app
@@ -110,12 +108,14 @@ function About() {
           To install the Pomodoro App as a PWA, please follow the instructions
           specific to your browser and device.
         </p>
-        <button className="install-button">Install</button>
+        <DownloadPWAButton />
+
         <p>
           Start using the Plain Pomodoro App today and supercharge your
           productivity!
         </p>
       </div>
+
       <Footer />
     </div>
   )

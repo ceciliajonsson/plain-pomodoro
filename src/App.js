@@ -3,7 +3,7 @@ import './index.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import PomodoroTimer from './components/PomodoroTimer'
 import { PomodoroProvider } from './contexts/PomodoroContext'
-import About from './components/About'
+import About from './pages/About'
 
 function App() {
   return (
