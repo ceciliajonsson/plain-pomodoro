@@ -21,7 +21,6 @@ h2 {
   margin-bottom: 0px;
   margin-top: 10px;
   line-height: 1.25;
-
 }
 
 .count-down-circle-timer-text h3 {
@@ -31,8 +30,7 @@ h2 {
   color: #f0f0ea;
   line-height: 0px;
   margin-bottom: 4px;
-  letter-spacing: .1rem;
-
+  letter-spacing: 0.1rem;
 }
 
 .count-down-circle-timer-text p {
@@ -48,8 +46,6 @@ p {
   font-size: 16px;
   color: #545454;
   line-height: 1.5;
-
-  
 }
 
 button {
@@ -64,13 +60,13 @@ button {
   margin-bottom: 0.2rem;
   background: #264653;
   min-width: 80px;
-  letter-spacing: .035rem;
+  letter-spacing: 0.035rem;
   cursor: pointer;
   transition-duration: 0.4s;
 }
 
 button:hover {
-  background-color: #C7C7BD;
+  background-color: #c7c7bd;
   color: #264653;
   font-weight: 400;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05), 0 6px 5px 0 rgba(0, 0, 0, 0.05);
@@ -92,13 +88,14 @@ button:hover {
   border-radius: 3rem;
   margin-top: 0.2rem;
   margin-bottom: 0.2rem;
-  background: #C7C7BD;
+  background: #c7c7bd;
   min-width: 80px;
   margin-right: 0.2rem;
   transition-duration: 0.4s;
 }
 
-ul, ol {
+ul,
+ol {
   margin-left: 10px;
   padding-left: 5px;
   font-family: 'Sora', sans-serif;
@@ -110,7 +107,8 @@ ul, ol {
 ol {
   padding-left: 9px;
 }
-ul li, ol li {
+ul li,
+ol li {
   margin-bottom: 10px;
 }
 .start-setting-button {
@@ -133,44 +131,49 @@ ul li, ol li {
 }
 .footer {
   background-color: #264653;
-    justify-content: space-between;
+  justify-content: space-between;
   align-items: flex-start;
   display: flex;
   align-items: center;
-  letter-spacing: .035rem;
+  letter-spacing: 0.035rem;
   min-height: 38px;
   flex-direction: row;
   padding-left: 5vw;
   padding-right: 5vw;
-
-
 }
 
-.footer-content {
+.footer-content,
+.footer-content-holder {
   font-size: 12px;
-  padding-left: 5px;
-  padding-right: 5px;
   color: #f0f0ea;
   line-height: 1.1;
   text-decoration: none;
-    font-family: 'Sora', sans-serif;
-      font-weight: 300;
-      color: #f0f0ea;
+  font-family: 'Sora', sans-serif;
+  font-weight: 300;
+  color: #f0f0ea;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
 }
 .footer-content:hover {
   text-decoration: underline;
 }
+.footer-divider {
+  margin-left: 10px;
+  margin-right: 10px;
+}
 
 .settings-info {
-  width: 100vw;
   background-color: #264653;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: flex-start;
   display: flex;
-  align-items: top;
-  letter-spacing: .035rem;
+  align-items: center;
+  letter-spacing: 0.035rem;
   min-height: 38px;
-  align-items: top;
+  padding-left: 5vw;
+  padding-right: 5vw;
 }
 
 .settings-info p {
@@ -190,24 +193,22 @@ ul li, ol li {
   width: 30vw;
   padding: 20px;
   margin-bottom: 20px;
-  
 }
-.settings input{
+.settings input {
   border: 2px dotted #264653;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  display: flex;  
+  display: flex;
   height: 20px;
   background-color: #f0f0ea;
   font-family: 'Sora', sans-serif;
   font-weight: 300;
   text-align: left;
   margin-top: 2px !important;
-
 }
 .settings label {
-margin-bottom: 10px !important;
+  margin-bottom: 10px !important;
 }
 .time-wrapper {
   display: flex;
@@ -219,7 +220,7 @@ margin-bottom: 10px !important;
   color: #efefef;
   background: #264653;
   font-size: 3.5rem;
-  box-shadow: 1rem 1.5rem 2rem rgba(27, 50, 59, .7);
+  box-shadow: 1rem 1.5rem 2rem rgba(27, 50, 59, 0.7);
 }
 
 button:disabled,
@@ -239,11 +240,11 @@ button[disabled] {
   padding-bottom: 8vw;
 }
 
-.pomodoro h1+p{
-    width: 50vw;
-    text-align: center;
-    margin-bottom: 20px;
-    margin-top: 5px;
+.pomodoro h1 + p {
+  width: 50vw;
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 5px;
 }
 
 .about-page {
@@ -251,12 +252,11 @@ button[disabled] {
   width: 100vw;
 }
 .about-page-content {
-padding-bottom: 8vw;
-padding-top: 8vw;
-padding-left: 5vw;
-padding-right: 5vw;
-width: 50vw;
-  
+  padding-bottom: 8vw;
+  padding-top: 8vw;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  width: 50vw;
 }
 
 label {
@@ -290,8 +290,6 @@ textarea {
   color: #545454;
   margin-bottom: 10px;
   border: 2px dotted #264653;
-
-      
 }
 .goal-item {
   font-family: 'Sora', sans-serif;
@@ -307,48 +305,47 @@ textarea {
   border-style: dotted;
   border-color: #264653;
   margin-bottom: 20px;
-  margin-top: 10px;  
+  margin-top: 10px;
 }
 .goal-item-buttons {
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-end;
   display: flex;
-      margin-top: 20px;
+  margin-top: 20px;
 }
 
 span {
-display: block;
+  display: block;
   width: 100%;
   word-wrap: break-word;
 }
 .goal-date-holder {
   width: 100%;
   text-align: left;
-    font-family: 'Sora', sans-serif;
-      font-weight: 100;
-      color: #97978f;
-      font-size: 14px;
-      margin-bottom: 10px;
-
+  font-family: 'Sora', sans-serif;
+  font-weight: 100;
+  color: #97978f;
+  font-size: 14px;
+  margin-bottom: 10px;
 }
 
 .flash-message {
   font-family: 'Poltawski Nowy', serif;
-    font-weight: 400;
-    font-size: 16px;
-    color: #264653;
-    line-height: 2;
+  font-weight: 400;
+  font-size: 16px;
+  color: #264653;
+  line-height: 2;
 }
 
-input[type=number] {
+input[type='number'] {
   -moz-appearance: textfield;
   appearance: textfield;
   margin: 0;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
@@ -360,37 +357,46 @@ textarea:focus {
 }
 
 @media screen and (max-width: 1300px) {
-
-  .settings, .goal-input, .goal-item {
+  .settings,
+  .goal-input,
+  .goal-item {
     width: 40vw;
   }
 }
 
 @media screen and (max-width: 1050px) {
-
-  .settings, .goal-input, .goal-item {
-      width: 60vw;
-    }
-.about-page-content {
- width: 70vw;
+  .settings,
+  .goal-input,
+  .goal-item {
+    width: 60vw;
+  }
+  .about-page-content {
+    width: 70vw;
     padding-left: 2.5vw;
-      padding-right: 2.5vw;
- }
+    padding-right: 2.5vw;
+  }
+  .footer,
+  .settings-info {
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+  }
 }
 
-
 @media screen and (max-width: 767px) {
-  .settings, .goal-input, .goal-item {
-      width: 80vw;
+  .settings,
+  .goal-input,
+  .goal-item {
+    width: 80vw;
   }
   .about-page-content {
     width: 90vw;
-
   }
 }
 
 @media screen and (max-width: 479px) {
-  .settings, .goal-input, .goal-item {
-      width: 80vw;
-    }
+  .settings,
+  .goal-input,
+  .goal-item {
+    width: 80vw;
+  }
 }
