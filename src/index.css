@@ -130,6 +130,12 @@ ol li {
   display: flex;
 }
 .footer {
+  font-size: 12px;
+  color: #f0f0ea;
+  line-height: 1.1;
+  text-decoration: none;
+  font-family: 'Sora', sans-serif;
+  font-weight: 300;
   background-color: #264653;
   justify-content: space-between;
   align-items: flex-start;
@@ -142,26 +148,39 @@ ol li {
   padding-right: 5vw;
 }
 
-.footer-content,
-.footer-content-holder {
+.footer-content-holder,
+a {
   font-size: 12px;
   color: #f0f0ea;
   line-height: 1.1;
   text-decoration: none;
   font-family: 'Sora', sans-serif;
   font-weight: 300;
-  color: #f0f0ea;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   display: flex;
 }
+
 .footer-content:hover {
   text-decoration: underline;
 }
 .footer-divider {
   margin-left: 10px;
   margin-right: 10px;
+}
+
+small {
+  font-size: 12px;
+  color: #f0f0ea;
+  line-height: 1.1;
+  text-decoration: none;
+  font-family: 'Sora', sans-serif;
+  font-weight: 300;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
 }
 
 .settings-info {
@@ -183,6 +202,10 @@ ol li {
   color: #f0f0ea;
   line-height: 1.1;
 }
+.settings-info p:first-of-type {
+  padding-left: 0px;
+}
+
 .settings {
   border: 2px dotted #264653;
   flex-direction: column;
@@ -221,13 +244,6 @@ ol li {
   background: #264653;
   font-size: 3.5rem;
   box-shadow: 1rem 1.5rem 2rem rgba(27, 50, 59, 0.7);
-}
-
-button:disabled,
-button[disabled] {
-  border: 1px solid #999999;
-  background-color: blue;
-  color: #666666;
 }
 
 .pomodoro {
@@ -275,7 +291,7 @@ label {
   padding: 20px;
   border-style: dotted;
   border-color: #264653;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 textarea {
@@ -305,7 +321,6 @@ textarea {
   border-style: dotted;
   border-color: #264653;
   margin-bottom: 20px;
-  margin-top: 10px;
 }
 .goal-item-buttons {
   flex-direction: row;
@@ -313,6 +328,18 @@ textarea {
   align-items: flex-end;
   display: flex;
   margin-top: 20px;
+}
+.download-button {
+  border: 2px solid #264653;
+  background-color: transparent;
+  color: #264653;
+  font-weight: 400;
+}
+
+.download-button:hover {
+  background-color: #264653;
+  color: #f0f0ea;
+  font-weight: 300;
 }
 
 span {

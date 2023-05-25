@@ -13,7 +13,9 @@ const Footer = () => {
           About
         </Link>
       </div>
-      <div className="footer-content">© 2023 Plain Pomodoro</div>
+      <div>
+        <small>© 2023 Plain Pomodoro</small>
+      </div>
     </div>
   )
 }

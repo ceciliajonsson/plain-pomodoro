@@ -15,7 +15,7 @@ function SettingsInfo({ focusSessions }) {
       <p>Duration of short breaks: {formatTime(settings.shortBreak)}</p>
       <p>Duration of long breaks: {formatTime(settings.longBreak)}</p>
       <p>Number of focus sessions: {settings.intervals}</p>
-      <p>Completed focus sessions: {focusSessions}</p>
+      <p>Completed focus sessions: {focusSessions || 0}</p>
     </div>
   )
 }

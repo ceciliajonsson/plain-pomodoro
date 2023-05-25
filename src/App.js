@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import PomodoroTimer from './components/PomodoroTimer'
 import { PomodoroProvider } from './contexts/PomodoroContext'
 import About from './pages/About'
+import DownloadPWAButton from './components/DownloadPWAButton'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/" element={<PomodoroTimer />} />
           <Route path="/about" element={<About />} />
+          <Route path="/download" component={DownloadPWAButton} />
         </Routes>
       </PomodoroProvider>
     </Router>

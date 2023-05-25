@@ -33,7 +33,11 @@ const DownloadPWAButton = () => {
     }
   }
 
-  return <button onClick={handleDownloadClick}>Download PWA</button>
+  return (
+    <button className="download-button" onClick={handleDownloadClick}>
+      Download Plain Pomodoro
+    </button>
+  )
 }
 
 export default DownloadPWAButton
