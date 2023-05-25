@@ -10,7 +10,6 @@ import SettingsInfo from './SettingsInfo'
 import FlashMessage from './FlashMessage'
 import TimerSound from '../assets/sounds/owl-hooting-48028.mp3'
 import Footer from './Footer'
-import DownloadPWAButton from './DownloadPWAButton'
 
 function PomodoroTimer() {
   const [start, setStart] = useState(false)
@@ -173,7 +172,6 @@ function PomodoroTimer() {
           toggleCompletion={toggleCompletion}
           timestamp={goal.timestamp}
         />
-        <DownloadPWAButton />
       </div>
       <Footer />
     </div>

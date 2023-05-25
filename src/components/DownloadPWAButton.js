@@ -1,25 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+import pwaInstallPrompt from '../singletons/pwaInstallPrompt'
 
 const DownloadPWAButton = () => {
-  const [deferredPrompt, setDeferredPrompt] = useState(null)
-
-  useEffect(() => {
-    const handleBeforeInstallPrompt = (event) => {
-      event.preventDefault()
-      setDeferredPrompt(event)
-    }
-
-    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
-
-    return () => {
-      window.removeEventListener(
-        'beforeinstallprompt',
-        handleBeforeInstallPrompt
-      )
-    }
-  }, [])
-
   const handleDownloadClick = () => {
+    console.log('download button clicked')
+    const deferredPrompt = pwaInstallPrompt.getDeferredPrompt()
     if (deferredPrompt) {
       deferredPrompt.prompt()
       deferredPrompt.userChoice.then((choiceResult) => {
@@ -28,16 +13,11 @@ const DownloadPWAButton = () => {
         } else {
           console.log('PWA installation dismissed')
         }
-        setDeferredPrompt(null)
       })
     }
   }
 
-  return (
-    <button className="download-button" onClick={handleDownloadClick}>
-      Download Plain Pomodoro
-    </button>
-  )
+  return <button onClick={handleDownloadClick}>Download Plain Pomodoro</button>
 }
 
 export default DownloadPWAButton

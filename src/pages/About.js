@@ -1,6 +1,7 @@
 import React from 'react'
 import SettingsInfo from '../components/SettingsInfo'
 import Footer from '../components/Footer'
+import DownloadPWAButton from '../components/DownloadPWAButton'
 
 function About() {
   return (
@@ -107,6 +108,7 @@ function About() {
           To install the Pomodoro App as a PWA, please follow the instructions
           specific to your browser and device.
         </p>
+        <DownloadPWAButton />
         <p>
           Start using the Plain Pomodoro App today and supercharge your
           productivity!
