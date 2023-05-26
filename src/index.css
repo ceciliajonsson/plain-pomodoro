@@ -330,12 +330,21 @@ textarea {
   margin-top: 20px;
 }
 
-span {
+.goal-item-text {
   display: block;
   width: 100%;
   word-wrap: break-word;
+  border: none;
+  padding: 12px 8px;
+  box-sizing: border-box;
+  font-size: 16px;
+  resize: none;
+  font-family: 'Sora', sans-serif;
+  font-weight: 300;
+  color: #545454;
 }
-.goal-date-holder {
+
+.goal-date-holder > small {
   width: 100%;
   text-align: left;
   font-family: 'Sora', sans-serif;

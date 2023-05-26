@@ -1,6 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-function GoalList({ goals, removeGoal, toggleCompletion }) {
+function GoalList({ goals, removeGoal, toggleCompletion, updateGoal }) {
+  const [editingIndex, setEditingIndex] = useState(null)
+
+  const handleEdit = (index) => {
+    setEditingIndex(index)
+  }
+
+  const handleChange = (event, index) => {
+    updateGoal(index, event.target.value)
+  }
+
+  const handleBlur = () => {
+    setEditingIndex(null)
+  }
+
   return (
     <div className="goal-list">
       {goals.map((goal, index) => (
@@ -8,12 +22,15 @@ function GoalList({ goals, removeGoal, toggleCompletion }) {
           <div className="goal-date-holder">
             <small>{goal.timestamp}</small>
           </div>
-          <span
+          <textarea
             className="goal-item-text"
             style={{ textDecoration: goal.completed ? 'line-through' : 'none' }}
+            disabled={editingIndex !== index}
+            onChange={(e) => handleChange(e, index)}
+            onBlur={handleBlur}
           >
             {goal.text}
-          </span>
+          </textarea>
           <div className="goal-item-buttons">
             <button
               className="secondary-button"
@@ -27,6 +44,13 @@ function GoalList({ goals, removeGoal, toggleCompletion }) {
               onClick={() => toggleCompletion(index)}
             >
               {goal.completed ? 'Undo' : 'Complete'}
+            </button>
+
+            <button
+              className="secondary-button"
+              onClick={() => handleEdit(index)}
+            >
+              Edit
             </button>
           </div>
         </div>

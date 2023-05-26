@@ -120,6 +120,15 @@ function PomodoroTimer() {
       return updatedGoals
     })
   }
+
+  const updateGoal = (index, newText) => {
+    setGoals((prevGoals) => {
+      const newGoals = [...prevGoals]
+      newGoals[index] = { ...newGoals[index], text: newText }
+      return newGoals
+    })
+  }
+
   const toggleCompletion = (index) => {
     setGoals((prevGoals) =>
       prevGoals.map((goal, i) => {
@@ -171,6 +180,7 @@ function PomodoroTimer() {
           removeGoal={removeGoal}
           toggleCompletion={toggleCompletion}
           timestamp={goal.timestamp}
+          updateGoal={updateGoal}
         />
       </div>
       <Footer />
