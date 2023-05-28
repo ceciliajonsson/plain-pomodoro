@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react'
-// import IntervalDisplay from './IntervalDisplay'
 import ControlButtons from './StartStopButtons'
 import Timer from './Timer'
 import GoalInput from './GoalInput'
@@ -30,7 +29,7 @@ function PomodoroTimer() {
   useEffect(() => {
     setDuration(settings.focusTime)
     setSession('focus')
-    setKey((prevKey) => prevKey + 1) // Reset the timer
+    setKey((prevKey) => prevKey + 1)
   }, [settings])
 
   useEffect(() => {
@@ -50,7 +49,6 @@ function PomodoroTimer() {
       setStart(false)
     } else {
       setStart(true)
-      //setKey((prevKey) => prevKey + 1)
     }
   }
 
@@ -109,7 +107,7 @@ function PomodoroTimer() {
       setFlashMessage('Goal cannot be empty. Please enter a valid goal.')
       setTimeout(() => {
         setFlashMessage(null)
-      }, 3000) // this will clear the flash message after 3 seconds
+      }, 3000) // This will clear the flash message after 3 seconds.
     }
   }
 
@@ -158,10 +156,6 @@ function PomodoroTimer() {
             duration={duration}
             handleComplete={handleComplete}
           />
-          {/* <IntervalDisplay
-        focusSessions={focusSessions}
-        intervals={settings.intervals}
-      /> */}
         </div>
         <div className="start-setting-button">
           <ControlButtons start={start} handleStartStop={handleStartStop} />

@@ -295,8 +295,8 @@ label {
   display: flex;
   width: 30vw;
   padding: 20px;
-  border-style: dotted;
-  border-color: #264653;
+  border: 2px dotted #264653;
+
   margin-bottom: 10px;
 }
 
@@ -349,7 +349,7 @@ textarea {
   font-family: 'Sora', sans-serif;
   font-weight: 300;
   color: #545454;
-  border: 2px solid #f0f0ea;
+  border: 1px solid #f0f0ea;
 }
 
 .goal-date-holder > small {
@@ -385,7 +385,7 @@ input[type='number']::-webkit-outer-spin-button {
 input:focus,
 textarea:focus {
   outline: none !important;
-  border: 2px solid #264653;
+  border: 1px solid #264653;
 }
 
 .goal-item-text::placeholder {
