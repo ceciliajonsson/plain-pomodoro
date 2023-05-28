@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import TextareaAutosize from 'react-textarea-autosize'
 function GoalList({ goals, removeGoal, toggleCompletion, updateGoal }) {
   const [editIndex, setEditIndex] = useState(null)
   const [tempGoal, setTempGoal] = useState('')
@@ -31,7 +31,7 @@ function GoalList({ goals, removeGoal, toggleCompletion, updateGoal }) {
           <div className="goal-date-holder">
             <small>{goal.timestamp}</small>
           </div>
-          <textarea
+          <TextareaAutosize
             className="goal-item-text"
             style={{ textDecoration: goal.completed ? 'line-through' : 'none' }}
             readOnly={editIndex !== index}
