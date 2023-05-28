@@ -1,18 +1,17 @@
 import React, { useState } from 'react'
 
 function GoalList({ goals, removeGoal, toggleCompletion, updateGoal }) {
-  const [editingIndex, setEditingIndex] = useState(null)
+  const [editIndex, setEditIndex] = useState(null)
+  const [tempGoal, setTempGoal] = useState('')
 
-  const handleEdit = (index) => {
-    setEditingIndex(index)
+  const handleBlur = (index) => {
+    updateGoal(index, tempGoal)
+    setEditIndex(null)
   }
 
-  const handleChange = (event, index) => {
-    updateGoal(index, event.target.value)
-  }
-
-  const handleBlur = () => {
-    setEditingIndex(null)
+  const handleFocus = (index, text) => {
+    setEditIndex(index)
+    setTempGoal(text)
   }
 
   return (
@@ -25,12 +24,13 @@ function GoalList({ goals, removeGoal, toggleCompletion, updateGoal }) {
           <textarea
             className="goal-item-text"
             style={{ textDecoration: goal.completed ? 'line-through' : 'none' }}
-            disabled={editingIndex !== index}
-            onChange={(e) => handleChange(e, index)}
-            onBlur={handleBlur}
-          >
-            {goal.text}
-          </textarea>
+            readOnly={editIndex !== index}
+            value={editIndex === index ? tempGoal : goal.text}
+            onClick={() => handleFocus(index, goal.text)}
+            onChange={(e) => setTempGoal(e.target.value)}
+            onBlur={() => handleBlur(index)}
+          />
+
           <div className="goal-item-buttons">
             <button
               className="secondary-button"
@@ -44,13 +44,6 @@ function GoalList({ goals, removeGoal, toggleCompletion, updateGoal }) {
               onClick={() => toggleCompletion(index)}
             >
               {goal.completed ? 'Undo' : 'Complete'}
-            </button>
-
-            <button
-              className="secondary-button"
-              onClick={() => handleEdit(index)}
-            >
-              Edit
             </button>
           </div>
         </div>
