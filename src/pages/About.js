@@ -34,8 +34,8 @@ function About() {
             Visual and audio notifications to signal the end of each interval.
           </li>
           <li>
-            Goal setting functionality to set and track tasks or objectives
-            during the work sessions.
+            Goal setting functionality to set, edit and track tasks or
+            objectives during the work sessions.
           </li>
           <li>
             Intuitive interface with a simple and clean design for a

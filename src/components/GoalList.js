@@ -4,14 +4,24 @@ function GoalList({ goals, removeGoal, toggleCompletion, updateGoal }) {
   const [editIndex, setEditIndex] = useState(null)
   const [tempGoal, setTempGoal] = useState('')
 
-  const handleBlur = (index) => {
-    updateGoal(index, tempGoal)
+  const handleBlur = () => {
+    if (tempGoal.trim() === '') {
+      updateGoal(editIndex, '')
+    } else {
+      updateGoal(editIndex, tempGoal)
+    }
     setEditIndex(null)
+    setTempGoal('')
   }
 
   const handleFocus = (index, text) => {
+    if (goals[index].completed) return
     setEditIndex(index)
     setTempGoal(text)
+  }
+
+  const handleInputChange = (e) => {
+    setTempGoal(e.target.value)
   }
 
   return (
@@ -25,10 +35,16 @@ function GoalList({ goals, removeGoal, toggleCompletion, updateGoal }) {
             className="goal-item-text"
             style={{ textDecoration: goal.completed ? 'line-through' : 'none' }}
             readOnly={editIndex !== index}
+            disabled={goal.completed}
             value={editIndex === index ? tempGoal : goal.text}
             onClick={() => handleFocus(index, goal.text)}
-            onChange={(e) => setTempGoal(e.target.value)}
-            onBlur={() => handleBlur(index)}
+            onChange={handleInputChange}
+            onBlur={handleBlur}
+            placeholder={
+              goal.text === ''
+                ? 'This goal is empty. Click here to edit this goal.'
+                : ''
+            }
           />
 
           <div className="goal-item-buttons">
@@ -42,6 +58,7 @@ function GoalList({ goals, removeGoal, toggleCompletion, updateGoal }) {
             <button
               className="secondary-button"
               onClick={() => toggleCompletion(index)}
+              disabled={goal.text === ''}
             >
               {goal.completed ? 'Undo' : 'Complete'}
             </button>

@@ -78,6 +78,12 @@ button:hover {
   font-weight: 300;
 }
 
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 .secondary-button {
   font-family: 'Sora', sans-serif;
   font-weight: 400;
@@ -291,7 +297,7 @@ label {
   padding: 20px;
   border-style: dotted;
   border-color: #264653;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 textarea {
@@ -321,13 +327,13 @@ textarea {
   border-style: dotted;
   border-color: #264653;
   margin-bottom: 20px;
+  margin-top: 10px;
 }
 .goal-item-buttons {
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-end;
   display: flex;
-  margin-top: 20px;
 }
 
 .goal-item-text {
@@ -342,6 +348,7 @@ textarea {
   font-family: 'Sora', sans-serif;
   font-weight: 300;
   color: #545454;
+  border: 2px solid #f0f0ea;
 }
 
 .goal-date-holder > small {
@@ -378,6 +385,12 @@ input:focus,
 textarea:focus {
   outline: none !important;
   border: 2px solid #264653;
+}
+
+.goal-item-text::placeholder {
+  font-style: italic;
+  color: #97978f;
+  margin-left: 0px;
 }
 
 @media screen and (max-width: 1300px) {
