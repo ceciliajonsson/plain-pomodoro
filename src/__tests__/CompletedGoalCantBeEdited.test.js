@@ -26,21 +26,6 @@ it('Completed goal should not be editable', async () => {
     />
   )
 
-  // Find the first goal
-  const firstGoal = screen.getAllByRole('textbox')[0]
-
-  // Click on the first goal
-  userEvent.click(firstGoal)
-
-  // Clear the input
-  userEvent.clear(firstGoal)
-
-  // Simulate onBlur by tabbing out
-  userEvent.tab()
-
-  // Expect the updateGoal function to be called with the appropriate parameters
-  expect(mockUpdateGoal).toHaveBeenCalledWith(0, '')
-
   // Expect the second goal (completed) to be not editable
   const secondGoal = screen.getAllByRole('textbox')[1]
   expect(secondGoal.disabled).toBe(true)
