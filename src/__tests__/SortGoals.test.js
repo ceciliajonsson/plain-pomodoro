@@ -3,6 +3,9 @@ import '@testing-library/jest-dom/extend-expect'
 import PomodoroTimer from '../components/PomodoroTimer'
 import { PomodoroContext } from '../contexts/PomodoroContext'
 import React from 'react'
+import { MemoryRouter } from 'react-router-dom'
+
+jest.mock('react-textarea-autosize', () => (props) => <textarea {...props} />)
 
 const mockPomodoroContext = {
   settings: {
@@ -19,7 +22,9 @@ test('goals are sorted by date', async () => {
 
   render(
     <PomodoroContext.Provider value={mockPomodoroContext}>
-      <PomodoroTimer />
+      <MemoryRouter>
+        <PomodoroTimer />
+      </MemoryRouter>
     </PomodoroContext.Provider>
   )
 
