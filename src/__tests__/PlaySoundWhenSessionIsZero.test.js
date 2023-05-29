@@ -1,5 +1,6 @@
 import { render, fireEvent, screen, waitFor, act } from '@testing-library/react'
 import PomodoroTimer from '../components/PomodoroTimer'
+import { MemoryRouter } from 'react-router-dom'
 import { PomodoroContext } from '../contexts/PomodoroContext'
 import React from 'react'
 
@@ -19,7 +20,9 @@ const mockPomodoroContext = {
 test('sound plays when timer reaches zero', async () => {
   render(
     <PomodoroContext.Provider value={mockPomodoroContext}>
-      <PomodoroTimer />
+      <MemoryRouter>
+        <PomodoroTimer />
+      </MemoryRouter>
     </PomodoroContext.Provider>
   )
 
