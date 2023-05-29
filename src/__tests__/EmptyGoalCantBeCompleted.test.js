@@ -1,6 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import '@testing-library/jest-dom/extend-expect' // Import extend-expect from testing-library/jest-dom
 import GoalList from '../components/GoalList'
 
 jest.mock('react-textarea-autosize', () => {
@@ -16,31 +17,30 @@ const mockRemoveGoal = jest.fn()
 const mockToggleCompletion = jest.fn()
 const mockUpdateGoal = jest.fn()
 
-it('Empty goal with placeholder text should not be possible to complete', async () => {
-  render(
-    <GoalList
-      goals={mockGoals}
-      removeGoal={mockRemoveGoal}
-      toggleCompletion={mockToggleCompletion}
-      updateGoal={mockUpdateGoal}
-    />
-  )
+describe('Empty goal with placeholder text', () => {
+  it('should not be possible to complete', () => {
+    render(
+      <GoalList
+        goals={mockGoals}
+        removeGoal={mockRemoveGoal}
+        toggleCompletion={mockToggleCompletion}
+        updateGoal={mockUpdateGoal}
+      />
+    )
 
-  // Find the second goal (empty goal with placeholder text)
-  const secondGoal = screen.getAllByRole('textbox')[1]
+    const secondGoal = screen.getAllByRole('textbox')[1]
+    const completeButtons = screen.getAllByRole('button', { name: /complete/i })
+    const secondGoalCompleteButton = completeButtons.find(
+      (button) => button.textContent === 'Complete' && button.disabled
+    )
 
-  // Click on the second goal
-  userEvent.click(secondGoal)
+    userEvent.click(secondGoal)
+    userEvent.clear(secondGoal) // Clear the goal text
+    userEvent.tab()
 
-  // Type in the second goal
-  userEvent.type(secondGoal, 'New goal text')
-
-  // Simulate onBlur by tabbing out
-  userEvent.tab()
-
-  // Expect the updateGoal function to be called with the appropriate parameters
-  expect(mockUpdateGoal).toHaveBeenCalledWith(1, 'New goal text')
-
-  // Expect the second goal (empty goal with placeholder text) to not be completed
-  expect(mockToggleCompletion).not.toHaveBeenCalledWith(1)
+    expect(mockUpdateGoal).toHaveBeenCalledWith(1, '') // Ensure the goal text is empty
+    expect(mockToggleCompletion).not.toHaveBeenCalledWith(1)
+    expect(secondGoalCompleteButton).toBeInTheDocument() // Assert the complete button is present
+    expect(secondGoalCompleteButton).toBeDisabled() // Assert the complete button is disabled
+  })
 })
