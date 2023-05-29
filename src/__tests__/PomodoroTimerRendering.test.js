@@ -1,22 +1,58 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
-import '@testing-library/jest-dom/extend-expect'
+import { MemoryRouter } from 'react-router-dom'
+import { screen, render } from '@testing-library/react'
 import PomodoroTimer from '../components/PomodoroTimer'
-import { PomodoroContext } from '../contexts/PomodoroContext'
+import { PomodoroProvider } from '../contexts/PomodoroContext'
+import '@testing-library/jest-dom'
+jest.mock('react-textarea-autosize')
 
-const settings = {
-  focusTime: 25 * 60,
-  shortBreak: 5 * 60,
-  longBreak: 15 * 60,
-  intervals: 5,
+// In your Jest setup file or at the top of your test file
+global.navigator = {
+  serviceWorker: {
+    register: jest.fn(),
+  },
 }
 
-test('renders PomodoroTimer without crashing', () => {
+window.addEventListener = jest.fn(() => {})
+
+global.window = Object.create(window)
+window.addEventListener = jest.fn()
+
+// Mocking window object
+const mockWindow = {
+  location: {
+    hostname: '',
+    href: '',
+    origin: '',
+  },
+  addEventListener: jest.fn(),
+}
+
+// Mocking navigator object
+const mockNavigator = {
+  serviceWorker: {
+    register: jest.fn(),
+    ready: Promise.resolve({
+      unregister: jest.fn(),
+    }),
+    controller: null,
+  },
+}
+
+global.window = Object.create(window)
+Object.assign(global.window, mockWindow)
+
+global.navigator = Object.create(navigator)
+Object.assign(global.navigator, mockNavigator)
+
+it('renders without crashing', () => {
   render(
-    <PomodoroContext.Provider value={{ settings }}>
-      <PomodoroTimer />
-    </PomodoroContext.Provider>
+    <PomodoroProvider>
+      <MemoryRouter>
+        <PomodoroTimer />
+      </MemoryRouter>
+    </PomodoroProvider>
   )
 
-  expect(screen.getByText(/Plain Pomodoro/i)).toBeInTheDocument()
+  expect(screen.getByText('Plain Pomodoro')).toBeInTheDocument()
 })
