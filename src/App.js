@@ -8,10 +8,10 @@ import DownloadPWAButton from './components/DownloadPWAButton'
 
 function App() {
   return (
-    <Router>
+    <Router basename={'/plain-pomodoro'}>
       <PomodoroProvider>
         <Routes>
-          <Route path="/" element={<PomodoroTimer />} />
+          <Route exact path="/" element={<PomodoroTimer />} />
           <Route path="/about" element={<About />} />
           <Route path="/download" component={DownloadPWAButton} />
         </Routes>

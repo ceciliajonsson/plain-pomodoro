@@ -1,13 +1,22 @@
 import React from 'react'
-import ReactDOM from 'react-dom/client'
+import ReactDOM from 'react-dom'
 import App from './App'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 
-const root = ReactDOM.createRoot(document.getElementById('root'))
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-)
+// Wait for the DOM to fully load
+serviceWorkerRegistration.register('/plain-pomodoro/service-worker.js')
 
-serviceWorkerRegistration.register()
+document.addEventListener('DOMContentLoaded', () => {
+  const rootElement = document.getElementById('root')
+
+  if (rootElement) {
+    ReactDOM.render(
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>,
+      rootElement
+    )
+  } else {
+    console.error('Container element with ID "root" not found.')
+  }
+})

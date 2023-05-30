@@ -1,19 +1,24 @@
 {
-
   "name": "Plain Pomodoro",
   "short_name": "Plain Pomodoro",
+  "description": "A simple pomodoro timer",
   "theme_color": "#264653",
   "background_color": "#e0e0d5",
   "display": "standalone",
-  "scope": "/",
-  "start_url": "/",
+  "scope": ".",
+  "start_url": "/plain-pomodoro/",
 
   "icons": [
+      {
+      "src": "favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
     {
       "src": "maskable.png",
       "sizes": "196x196",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "maskable"
     },
     {
       "src": "logo192.png",
