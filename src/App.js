@@ -14,7 +14,7 @@ import NotFound from './pages/NotFound'
 
 function App() {
   return (
-    <Router>
+    <Router basename={'/plain-pomodoro'}>
       <PomodoroProvider>
         <Routes>
           <Route exact path="/" element={<PomodoroTimer />} />
