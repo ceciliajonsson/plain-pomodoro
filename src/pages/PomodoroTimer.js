@@ -1,14 +1,19 @@
+/**
+ * PomodoroTimer component renders the main Pomodoro timer functionality.
+ * @returns {JSX.Element} The rendered PomodoroTimer component.
+ */
+
 import React, { useContext, useEffect, useState } from 'react'
-import ControlButtons from './StartStopButtons'
-import Timer from './Timer'
-import GoalInput from './GoalInput'
-import GoalList from './GoalList'
+import ControlButtons from '../components/StartStopButtons'
+import Timer from '../components/Timer'
+import GoalInput from '../components/GoalInput'
+import GoalList from '../components/GoalList'
 import { PomodoroContext } from '../contexts/PomodoroContext'
-import Settings from './Settings'
-import SettingsInfo from './SettingsInfo'
-import FlashMessage from './FlashMessage'
+import Settings from '../components/Settings'
+import SettingsInfo from '../components/SettingsInfo'
+import FlashMessage from '../components/FlashMessage'
 import TimerSound from '../assets/sounds/owl-hooting-48028.mp3'
-import Footer from './Footer'
+import Footer from '../components/Footer'
 
 function PomodoroTimer() {
   const [start, setStart] = useState(false)
@@ -44,6 +49,11 @@ function PomodoroTimer() {
     localStorage.setItem('goals', JSON.stringify(goals))
   }, [goals])
 
+  /**
+   * Handles the start/stop button click.
+   * Toggles the `start` state.
+   */
+
   const handleStartStop = () => {
     if (start) {
       setStart(false)
@@ -52,6 +62,13 @@ function PomodoroTimer() {
     }
   }
 
+  /**
+   * Handles the timer completion.
+   * Updates the necessary states and returns the next timer configuration.
+   * @returns {[boolean, number]} An array containing the next timer configuration.
+   * The first element is a boolean indicating whether the timer should restart,
+   * and the second element is the duration in milliseconds for the next timer.
+   */
   const handleComplete = () => {
     setPlayTimerSound(true)
     let newFocusSessions = focusSessions
@@ -79,6 +96,12 @@ function PomodoroTimer() {
     return [true, 1000]
   }
 
+  /**
+   * Adds a goal to the list of goals.
+   * Validates the goal text and adds it to the list if valid.
+   * Displays a flash message if the goal text is empty.
+   * @param {string} goalText - The goal text to add.
+   */
   const addGoal = (goalText) => {
     if (goalText.trim() !== '') {
       const currentDate = new Date()
@@ -111,6 +134,10 @@ function PomodoroTimer() {
     }
   }
 
+  /**
+   * Removes a goal from the list of goals.
+   * @param {number} index - The index of the goal to remove.
+   */
   const removeGoal = (index) => {
     setGoals((prevGoals) => {
       const updatedGoals = prevGoals.filter((_, i) => i !== index)
@@ -119,6 +146,11 @@ function PomodoroTimer() {
     })
   }
 
+  /**
+   * Updates the text of a goal at the specified index.
+   * @param {number} index - The index of the goal to update.
+   * @param {string} newText - The new text for the goal.
+   */
   const updateGoal = (index, newText) => {
     setGoals((prevGoals) => {
       const newGoals = [...prevGoals]
@@ -127,6 +159,10 @@ function PomodoroTimer() {
     })
   }
 
+  /**
+   * Toggles the completion status of a goal at the specified index.
+   * @param {number} index - The index of the goal to toggle.
+   */
   const toggleCompletion = (index) => {
     setGoals((prevGoals) =>
       prevGoals.map((goal, i) => {

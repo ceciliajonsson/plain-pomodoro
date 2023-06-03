@@ -1,3 +1,8 @@
+/**
+ * Entry point of the Plain Pomodoro application.
+ * Renders the main App component and registers the service worker for offline functionality.
+ */
+
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'

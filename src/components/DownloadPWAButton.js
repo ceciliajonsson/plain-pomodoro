@@ -1,10 +1,10 @@
 import React from 'react'
-import pwaInstallPrompt from '../singletons/pwaInstallPrompt'
+import PWAInstallPrompt from '../singletons/PWAInstallPrompt'
 
 const DownloadPWAButton = () => {
   const handleDownloadClick = () => {
     console.log('download button clicked')
-    const deferredPrompt = pwaInstallPrompt.getDeferredPrompt()
+    const deferredPrompt = PWAInstallPrompt.getDeferredPrompt()
     if (deferredPrompt) {
       deferredPrompt.prompt()
       deferredPrompt.userChoice.then((choiceResult) => {

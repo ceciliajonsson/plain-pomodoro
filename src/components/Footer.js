@@ -1,3 +1,8 @@
+/**
+ * Footer component renders a footer section with navigation links and copyright information.
+ * @returns {JSX.Element} The rendered Footer component.
+ */
+
 import React from 'react'
 import { Link } from 'react-router-dom'
 

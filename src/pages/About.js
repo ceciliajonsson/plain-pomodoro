@@ -1,3 +1,8 @@
+/**
+ * About component renders the about page of the Plain Pomodoro Application.
+ * @returns {JSX.Element} The rendered About component.
+ */
+
 import React from 'react'
 import SettingsInfo from '../components/SettingsInfo'
 import Footer from '../components/Footer'

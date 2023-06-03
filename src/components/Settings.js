@@ -1,3 +1,8 @@
+/**
+ * Settings component renders a form for configuring the Pomodoro settings.
+ * @returns {JSX.Element} The rendered Settings component.
+ */
+
 import React, { useContext, useState } from 'react'
 import { PomodoroContext } from '../contexts/PomodoroContext'
 
@@ -18,6 +23,11 @@ function Settings({ setShowSettings }) {
     intervals: { min: 1, max: 10 },
   }
 
+  /**
+   * Handles the change event on the input fields.
+   * Updates the temporary settings state with the new value.
+   * @param {Object} e - The change event object.
+   */
   const handleChange = (e) => {
     const { name, value } = e.target
     setError('') // Reset error message when the user starts typing
@@ -27,6 +37,10 @@ function Settings({ setShowSettings }) {
     })
   }
 
+  /**
+   * Handles the save button click.
+   * Validates the settings and saves them if valid.
+   */
   const handleSave = () => {
     let newSettings = {}
     const fieldNames = {

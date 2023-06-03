@@ -1,3 +1,8 @@
+/**
+ * SettingsInfo component displays information about the Pomodoro settings and completed focus sessions.
+ * @returns {JSX.Element} The rendered SettingsInfo component.
+ */
+
 import React, { useContext } from 'react'
 import { PomodoroContext } from '../contexts/PomodoroContext'
 

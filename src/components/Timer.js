@@ -1,3 +1,14 @@
+/**
+ * Timer component renders a countdown timer using react-countdown-circle-timer.
+ * @param {Object} props - The component props.
+ * @param {boolean} props.start - Flag indicating whether the timer is started.
+ * @param {string} props.timerKey - Unique key for the countdown timer.
+ * @param {string} props.session - Current session type ('focus' or 'break').
+ * @param {number} props.duration - Duration of the timer in seconds.
+ * @param {function} props.handleComplete - The function to handle timer completion.
+ * @returns {JSX.Element} The rendered Timer component.
+ */
+
 import React from 'react'
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 
