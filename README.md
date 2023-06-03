@@ -58,6 +58,7 @@ To create a production build of the application, you can run npm run build. This
 - create-react-app - Tool used to bootstrap the project
 - Service Workers API - Used to make the app a Progressive Web App
 - Local Storage API - Provides access to a local storage
+- Progressive Web Application (PWA) - Leverages modern web capabilities to deliver an app-like user experience
 
 ## Getting Started
 
