@@ -10,14 +10,16 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import PomodoroTimer from './pages/PomodoroTimer'
 import { PomodoroProvider } from './contexts/PomodoroContext'
 import About from './pages/About'
+import NotFound from './pages/NotFound'
 
 function App() {
   return (
-    <Router basename={'/plain-pomodoro'}>
+    <Router>
       <PomodoroProvider>
         <Routes>
           <Route exact path="/" element={<PomodoroTimer />} />
           <Route path="/about" element={<About />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </PomodoroProvider>
     </Router>

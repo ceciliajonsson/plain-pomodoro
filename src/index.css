@@ -269,16 +269,21 @@ small {
   margin-top: 5px;
 }
 
-.about-page {
+.about-page,
+.not-found-page {
   background-color: #f0f0ea;
   width: 100vw;
 }
-.about-page-content {
+.about-page-content,
+.not-found-content {
   padding-bottom: 8vw;
   padding-top: 8vw;
   padding-left: 5vw;
   padding-right: 5vw;
   width: 50vw;
+}
+.not-found-content h1 {
+  margin-bottom: 20px;
 }
 
 label {
