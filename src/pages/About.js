@@ -14,7 +14,7 @@ function About() {
       <SettingsInfo />
 
       <div className="about-page-content">
-        <h1>About the Plain Pomodoro Applicaiton</h1>
+        <h1>About the Plain Pomodoro Application</h1>
         <p>
           <i>Last updated: 4 June 2023</i>
         </p>
