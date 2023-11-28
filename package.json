@@ -1,7 +1,7 @@
 {
+  "homepage": "https://ceciliajonsson.github.io/plain-pomodoro/",
   "name": "plain-pomodoro",
   "version": "0.1.0",
-  "homepage": "https://ceciliajonsson.github.io/plain-pomodoro/",
   "private": true,
   "dependencies": {
     "react": "^18.2.0",
