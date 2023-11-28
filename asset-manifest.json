@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/plain-pomodoro/static/css/main.ac9ccdaf.css",
+    "main.js": "/plain-pomodoro/static/js/main.9ac9b2ee.js",
+    "static/media/owl-hooting-48028.mp3": "/plain-pomodoro/static/media/owl-hooting-48028.42a4cb378f321fb2975a.mp3",
+    "service-worker.js": "/plain-pomodoro/service-worker.js",
+    "index.html": "/plain-pomodoro/index.html",
+    "main.ac9ccdaf.css.map": "/plain-pomodoro/static/css/main.ac9ccdaf.css.map",
+    "main.9ac9b2ee.js.map": "/plain-pomodoro/static/js/main.9ac9b2ee.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ac9ccdaf.css",
+    "static/js/main.9ac9b2ee.js"
+  ]
+}
